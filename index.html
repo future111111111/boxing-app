@@ -5,15 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>COMBAT CORE v5.0 MASTER</title>
+    <meta name="apple-mobile-web-app-title" content="Combat Core">
+    
+    <title>COMBAT CORE v5.1 MASTER</title>
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Squada+One&display=swap" rel="stylesheet">
+    
     <style>
         :root { --bg-color: #080a0f; --panel-color: #111520; --border-color: #1e2638; --text-color: #e2e8f0; --accent-blue: #87ceeb; --accent-purple: #a855f7; --accent-green: #4ade80; --accent-red: #f87171; --accent-dim: #64748b; }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Share Tech Mono', monospace; -webkit-tap-highlight-color: transparent; -webkit-user-select: none; user-select: none; }
         html, body { background-color: var(--bg-color); color: var(--text-color); overflow-x: hidden; overscroll-behavior-y: none; }
         body { padding: 20px 15px 120px 15px; }
         header { background: rgba(17, 21, 32, 0.75); backdrop-filter: blur(12px); border: 2px solid var(--border-color); padding: 18px 15px; margin-bottom: 15px; text-align: center; position: sticky; top: 10px; z-index: 100; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5); }
-        .username-display { font-size: 1.15rem; color: #fff; text-transform: uppercase; border-bottom: 1px dashed var(--accent-dim); display: inline-block; padding: 2px 6px; }
+        .username-display { font-size: 1.15rem; color: #fff; text-transform: uppercase; border-bottom: 1px dashed var(--accent-dim); display: inline-block; padding: 2px 6px; cursor: pointer; }
         .rank-title { font-family: 'Squada One', sans-serif; color: var(--accent-blue); font-size: 1.9rem; text-transform: uppercase; }
         .nav-tabs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 5px; margin-bottom: 15px; }
         .tab-btn { background: var(--panel-color); color: var(--accent-dim); border: 1px solid var(--border-color); padding: 12px 0; font-size: 0.85rem; cursor: pointer; text-transform: uppercase; }
@@ -22,14 +25,14 @@
         .app-page.active { display: block; }
         .panel { background: var(--panel-color); border: 2px solid var(--border-color); padding: 16px; margin-bottom: 15px; }
         .panel-title { font-family: 'Squada One', sans-serif; font-size: 1.4rem; color: var(--accent-blue); text-transform: uppercase; }
-        .watch-btn { display: block; background: var(--accent-blue); color: #000; text-align: center; padding: 10px; text-decoration: none; font-weight: bold; margin-top: 10px; font-size: 0.8rem; border-radius: 4px; }
-        .instruction-text { font-size: 0.9rem; color: #cbd5e1; margin: 10px 0; line-height: 1.5; }
+        .watch-btn { display: block; background: var(--accent-blue); color: #000; text-align: center; padding: 10px; text-decoration: none; font-weight: bold; margin-top: 10px; font-size: 0.8rem; }
+        .instruction-text { font-size: 0.9rem; color: #cbd5e1; margin-top: 10px; line-height: 1.4; }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="username-display">FIGHTER_01</div>
+        <div><span class="username-display" id="userDisplay">FIGHTER_01</span></div>
         <div class="rank-title">RECRUIT DIVISION</div>
     </header>
 
@@ -43,17 +46,17 @@
     <div id="page-dashboard" class="app-page active">
         <div class="panel">
             <span class="panel-title">> Shadowboxing</span>
-            <p class="instruction-text">Keep your hands up by your face. Step and throw punches one at a time. Rotate your hips to put power into every hit, and never let your feet cross.</p>
+            <p class="instruction-text">Hands up by your face. Throw one punch at a time. Rotate your hips to put power into your strikes and keep your feet from crossing.</p>
             <a href="https://www.youtube.com/results?search_query=how+to+shadowbox+for+absolute+beginners" class="watch-btn">WATCH DRILL</a>
         </div>
         <div class="panel">
             <span class="panel-title">> Heavy Bag Work</span>
-            <p class="instruction-text">Hit with your knuckles, not your palms. Keep your non-punching hand glued to your chin to block incoming shots. Focus on form over power.</p>
+            <p class="instruction-text">Use your knuckles. Keep your other hand glued to your chin at all times to block counters.</p>
             <a href="https://www.youtube.com/results?search_query=how+to+hit+a+heavy+bag+for+total+beginners" class="watch-btn">WATCH DRILL</a>
         </div>
         <div class="panel">
             <span class="panel-title">> Footwork</span>
-            <p class="instruction-text">Step with your front foot first to move forward. Step with your back foot first to move back. Stay light on your toes.</p>
+            <p class="instruction-text">Move forward? Front foot first. Move backward? Back foot first. Stay light on your toes.</p>
             <a href="https://www.youtube.com/results?search_query=basic+boxing+footwork+for+beginners" class="watch-btn">WATCH DRILL</a>
         </div>
     </div>
