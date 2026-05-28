@@ -3,39 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>COMBAT CORE v5.1</title>
+    <title>COMBAT CORE v5.2</title>
     <style>
-        body { background: #080a0f; color: #e2e8f0; font-family: sans-serif; padding: 20px; }
+        :root { --bg: #080a0f; --panel: #111520; --blue: #87ceeb; --text: #e2e8f0; }
+        * { box-sizing: border-box; font-family: sans-serif; }
+        body { background: var(--bg); color: var(--text); padding: 20px; margin: 0; }
         .header { text-align: center; margin-bottom: 20px; }
-        .panel { background: #111520; border: 1px solid #1e2638; padding: 15px; margin-bottom: 15px; }
-        .task-title { color: #87ceeb; font-weight: bold; margin-bottom: 5px; }
-        .simple-text { font-size: 0.85rem; color: #cbd5e1; margin-bottom: 10px; }
-        .link { display: block; background: #87ceeb; color: #000; text-align: center; padding: 10px; text-decoration: none; font-weight: bold; font-size: 0.8rem; }
+        .nav { display: flex; gap: 10px; margin-bottom: 20px; }
+        .tab { flex: 1; background: var(--panel); border: 1px solid #333; padding: 10px; text-align: center; cursor: pointer; font-size: 0.8rem; }
+        .page { display: none; }
+        .active { display: block; }
+        .panel { background: var(--panel); border: 1px solid #333; padding: 15px; margin-bottom: 15px; }
+        .title { color: var(--blue); font-weight: bold; margin-bottom: 8px; }
+        .desc { font-size: 0.85rem; color: #cbd5e1; margin-bottom: 10px; line-height: 1.4; }
+        .btn { display: block; background: var(--blue); color: #000; text-align: center; padding: 10px; text-decoration: none; font-weight: bold; font-size: 0.8rem; }
     </style>
 </head>
 <body>
 
     <div class="header">
-        <h1>RECRUIT DIVISION</h1>
+        <h1>COMBAT CORE v5.2</h1>
     </div>
 
-    <div class="panel">
-        <div class="task-title">> Shadowboxing</div>
-        <div class="simple-text">Stand with one foot slightly in front of the other. Keep your hands up by your face. Throw your hands out one at a time, and twist your body when you punch to add power. Keep moving your feet.</div>
-        <a href="https://www.youtube.com/results?search_query=how+to+shadowbox+for+absolute+beginners" class="link">WATCH HOW TO DO IT</a>
+    <div class="nav">
+        <div class="tab" onclick="show('matrix')">Matrix</div>
+        <div class="tab" onclick="show('chassis')">Chassis</div>
+        <div class="tab" onclick="show('profile')">Profile</div>
     </div>
 
-    <div class="panel">
-        <div class="task-title">> Heavy Bag Work</div>
-        <div class="simple-text">Imagine the bag is a person. Hit it with your knuckles, not your palms. Every time you throw a punch, make sure your other hand stays up by your chin to "block" hits.</div>
-        <a href="https://www.youtube.com/results?search_query=how+to+hit+a+heavy+bag+for+total+beginners" class="link">WATCH HOW TO DO IT</a>
+    <div id="matrix" class="page active">
+        <div class="panel">
+            <div class="title">> Shadowboxing</div>
+            <div class="desc">Stand with one foot slightly in front of the other. Keep hands up by your face. Throw hands out one at a time, and twist your body when you punch for power. Keep your feet moving.</div>
+            <a href="https://www.youtube.com/results?search_query=how+to+shadowbox+for+absolute+beginners" class="btn">WATCH HOW</a>
+        </div>
+        <div class="panel">
+            <div class="title">> Heavy Bag Work</div>
+            <div class="desc">Imagine the bag is a person. Hit with your knuckles, not your palms. Every time you punch, make sure your other hand stays up by your chin to "block" hits.</div>
+            <a href="https://www.youtube.com/results?search_query=how+to+hit+a+heavy+bag+for+total+beginners" class="btn">WATCH HOW</a>
+        </div>
+        <div class="panel">
+            <div class="title">> Footwork</div>
+            <div class="desc">If you move forward, step with the front foot first. If you move back, step with the back foot first. Never let your feet cross over each other.</div>
+            <a href="https://www.youtube.com/results?search_query=basic+boxing+footwork+for+beginners" class="btn">WATCH HOW</a>
+        </div>
     </div>
 
-    <div class="panel">
-        <div class="task-title">> Footwork</div>
-        <div class="simple-text">Practice moving around. If you want to move forward, step with your front foot first. If you want to move backward, step with your back foot first. Never let your feet cross each other or you will lose your balance.</div>
-        <a href="https://www.youtube.com/results?search_query=basic+boxing+footwork+for+beginners" class="link">WATCH HOW TO DO IT</a>
+    <div id="chassis" class="page">
+        <div class="panel"><h3>Stats</h3><p>Weight, reach, and speed data will appear here.</p></div>
     </div>
 
+    <div id="profile" class="page">
+        <div class="panel"><h3>Fighter Profile</h3><p>Rank: Recruit Division</p></div>
+    </div>
+
+    <script>
+        function show(id) {
+            document.querySelectorAll('.page').forEach(p => p.style.display = 'none');
+            document.getElementById(id).style.display = 'block';
+        }
+    </script>
 </body>
 </html>
