@@ -778,7 +778,6 @@
         </div>
     </div>
 
-
     <div id="page-chassis" class="app-page">
         <div class="panel">
             <div class="panel-title-row" style="border:none; margin-bottom:5px;">
@@ -859,7 +858,6 @@
         </div>
     </div>
 
-
     <div id="page-profile" class="app-page">
         <div class="panel">
             <div class="panel-title-row">
@@ -869,827 +867,468 @@
                 <input type="number" step="0.1" class="weight-input" id="weightInputField" placeholder="LBS (e.g. 178.5)" onblur="forceIosKeyboardReset()">
                 <button class="weight-submit-btn" onclick="submitWeightEntry()">Log Weight</button>
             </div>
-            
-            <div class="progress-label" style="margin-top:0; margin-bottom:4px;"><span>WEIGHT VELOCITY STREAM (LAST 5 LOGS)</span></div>
-            <div class="trajectory-stream" id="trajectoryTimelineStream">
-                <div class="trajectory-node">[ SYSTEM PRIMED ]</div>
-            </div>
-        </div>
-
-        <div class="panel">
-            <div class="panel-title-row">
-                <span class="panel-title">Performance Analytics</span>
-            </div>
-
-            <div class="kinetic-slider-container">
-                <div class="kinetic-label-row">
-                    <span>🥊 STRIKING TANK</span>
-                    <span>⚡ MOBILITY GHOST</span>
-                </div>
-                <div class="kinetic-track">
-                    <div class="kinetic-pin" id="kineticBiasPin"></div>
-                </div>
-            </div>
-
-            <div class="progress-label" style="margin-top:15px; margin-bottom:6px;"><span>POTENTIAL UNLOCKED CAPACITIES</span></div>
-            
-            <div class="pentagon-bar-row">
-                <div class="pentagon-label"><span>STRENGTH</span><span id="ptext-str">0%</span></div>
-                <div class="pentagon-track"><div class="pentagon-fill" id="pfill-str"></div></div>
-            </div>
-            <div class="pentagon-bar-row">
-                <div class="pentagon-label"><span>SPEED</span><span id="ptext-spd">0%</span></div>
-                <div class="pentagon-track"><div class="pentagon-fill" id="pfill-spd"></div></div>
-            </div>
-            <div class="pentagon-bar-row">
-                <div class="pentagon-label"><span>STAMINA</span><span id="ptext-sta">0%</span></div>
-                <div class="pentagon-track"><div class="pentagon-fill" id="pfill-sta"></div></div>
-            </div>
-            <div class="pentagon-bar-row">
-                <div class="pentagon-label"><span>TACTICS</span><span id="ptext-tac">0%</span></div>
-                <div class="pentagon-track"><div class="pentagon-fill" id="pfill-tac"></div></div>
-            </div>
         </div>
     </div>
-
 
     <div id="page-syllabus" class="app-page">
         <div class="panel">
-            <div class="panel-title-row" style="border:none; margin-bottom:5px;">
-                <span class="panel-title">Professional Ranks & Syllabus</span>
+            <div class="panel-title-row">
+                <span class="panel-title">Syllabus Overview</span>
             </div>
-            
-            <div class="syllabus-tier" id="tier-0">
-                <div class="tier-header"><span>[1] RECRUIT DIVISION</span><span class="tier-status" id="tstat-0">LOCKED</span></div>
-                <div class="tier-reqs">Core Stance, Lead Jab, Linear Step Movement, Basic High Guard.</div>
-            </div>
-            <div class="syllabus-tier" id="tier-1">
-                <div class="tier-header"><span>[2] NOVICE BOXER</span><span class="tier-status" id="tstat-1">LOCKED</span></div>
-                <div class="tier-reqs">The Straight Right, Double Jab, Basic Slips, Pivot Steps.</div>
-            </div>
-            <div class="syllabus-tier" id="tier-2">
-                <div class="tier-header"><span>[3] AMATEUR STRIKER</span><span class="tier-status" id="tstat-2">LOCKED</span></div>
-                <div class="tier-reqs">Lead Hook execution, Roll under hooks, Frame-steps, Body Jab mechanics.</div>
-            </div>
-            <div class="syllabus-tier" id="tier-3">
-                <div class="tier-header"><span>[4] CONTENDER DECK</span><span class="tier-status" id="tstat-3">LOCKED</span></div>
-                <div class="tier-reqs">The Check Hook, Countering the Jab, Inside Fighting mechanics.</div>
-            </div>
-            <div class="syllabus-tier" id="tier-4">
-                <div class="tier-header"><span>[5] PRIZEFIGHTER</span><span class="tier-status" id="tstat-4">LOCKED</span></div>
-                <div class="tier-reqs">Philly Shell intro / High Guard adjustments, Framing, Angled Exits.</div>
-            </div>
-            <div class="syllabus-tier" id="tier-5">
-                <div class="tier-header"><span>[6] CHAMPION DIVISION</span><span class="tier-status" id="tstat-5">LOCKED</span></div>
-                <div class="tier-reqs">Feints to Draw Counters, Pull-Counter mastery, Advanced combination flow.</div>
-            </div>
-            <div class="syllabus-tier" id="tier-6">
-                <div class="tier-header"><span>[7] UNDISPUTED</span><span class="tier-status" id="tstat-6">LOCKED</span></div>
-                <div class="tier-reqs">Cutting off the ring vs elusive footwork, Multi-level pace adjustments.</div>
-            </div>
-            <div class="syllabus-tier" id="tier-7">
-                <div class="tier-header"><span>[8] HALL OF FAME</span><span class="tier-status" id="tstat-7">LOCKED</span></div>
-                <div class="tier-reqs">Pocket defense under heavy combinations, Setting psychological traps.</div>
-            </div>
-            <div class="syllabus-tier" id="tier-8">
-                <div class="tier-header"><span>[9] POUND-FOR-POUND KING</span><span class="tier-status" id="tstat-8">LOCKED</span></div>
-                <div class="tier-reqs">Absolute technical control. Complete adaptability across all fight systems.</div>
-            </div>
-        </div>
-
-        <div class="panel">
-            <div class="panel-title-row" style="border:none; margin-bottom:5px;">
-                <span class="panel-title">Fighter Achievements</span>
-            </div>
-            <div class="achievements-grid">
-                <div class="badge-card" id="badge-road">
-                    <div class="badge-icon">🏃‍♂️</div>
-                    <div class="badge-title">ROAD WARRIOR</div>
-                    <div class="badge-desc">Unlock a 3 day streak sequence.</div>
-                </div>
-                <div class="badge-card" id="badge-heavy">
-                    <div class="badge-icon">⚡</div>
-                    <div class="badge-title">HEAVY HITTER</div>
-                    <div class="badge-desc">Build your Strength rating up to 15.</div>
-                </div>
-                <div class="badge-card" id="badge-iron">
-                    <div class="badge-icon">🫁</div>
-                    <div class="badge-title">IRON LUNG</div>
-                    <div class="badge-desc">Build your Stamina rating up to 15.</div>
-                </div>
-                <div class="badge-card" id="badge-apex">
-                    <div class="badge-icon">👑</div>
-                    <div class="badge-title">APEX PROSPECT</div>
-                    <div class="badge-desc">Pass your first Gatekeeper Exam cleanly.</div>
-                </div>
-            </div>
+            <p style="font-size: 0.9rem; color: var(--accent-dim);">Syllabus requirements and division levels unlock sequentially as ranks scale.</p>
         </div>
     </div>
-
-    <div class="maintenance-panel">
-        <button class="timer-btn" style="margin-bottom: 15px;" onclick="toggleNightMode()">[ Toggle Night Mode Switch ]</button>
-        <div style="font-size:0.8rem; color:var(--accent-dim); margin-bottom: 5px;">SYSTEM MAINTENANCE TERMINAL</div>
-        <div class="danger-zone-wrapper">
-            <input type="text" class="danger-input" id="resetUnlockInput" placeholder="TYPE 'RESET' TO UNLOCK" oninput="checkResetUnlock()">
-            <button class="reset-btn" id="hardResetBtn" onclick="hardResetSystem()" disabled>Emergency Hard Reset</button>
-        </div>
-    </div>
-
 
     <script>
-        // Data Migration Cache Shield (v5.0 Master Realization Structure)
+        // ==========================================
+        // 1. GLOBAL CORE STATE
+        // ==========================================
         let state = {
             username: "FIGHTER_01",
             level: 1,
             xp: 0,
+            xpNeeded: 100,
+            careerRank: 1,
+            maxRanks: 9,
             streak: 0,
-            points: 0,
-            rankIndex: 0,
-            stats: { str: 10, spd: 10, sta: 10, tac: 10 },
-            statXp: { str: 0, spd: 0, sta: 0, tac: 0 },
-            gatekeeperActive: false,
-            lastLoggedDate: null,
-            overflowXp: 0,
-            achievements: { road: false, heavy: false, iron: false, apex: false },
-            midWorkoutChecked: [false, false, false],
-            nightMode: false,
-            weightHistory: [] // Minimal weight log array tracking objects: { date, weight }
+            pointsBank: 0,
+            activeTab: 'dashboard',
+            isExamGateActive: false,
+            
+            // Attributes Core
+            stats: {
+                str: 10,
+                spd: 10,
+                sta: 10,
+                tac: 10
+            },
+            baseStats: { str: 10, spd: 10, sta: 10, tac: 10 },
+            maxStatVal: 100,
+
+            // Boxing Timer Configuration
+            timer: {
+                duration: 180, // 3 Minutes
+                timeLeft: 180,
+                instance: null,
+                isRunning: false
+            },
+
+            // Task Configuration Map
+            tasks: {
+                'wrapper-task1': { completed: false, xp: 30, blueprint: 'Shadowboxing' },
+                'wrapper-task2': { completed: false, xp: 40, blueprint: 'Heavy Bag' },
+                'wrapper-task3': { completed: false, xp: 30, blueprint: 'Roadwork' }
+            },
+
+            // Blueprint Modifiers
+            blueprints: {
+                1: {
+                    title: "[RECRUIT DIVISION] Shadowboxing Blueprint",
+                    body: "• <b>Objective:</b> Perfect form velocity baseline execution.<br>• <b>Execution:</b> 3 rounds shadowboxing. Focus on strict linear stance defense, clean 1-2 snapping combinations, and pivot escapes."
+                },
+                2: {
+                    title: "[CONTENDER DIVISION] Advanced Structural Blueprint",
+                    body: "• <b>Objective:</b> Breaking linear predictive motion paths.<br>• <b>Execution:</b> 4 rounds shadowboxing. Integrate level-changes, tactical check-hooks, and high-guard frame pressure."
+                }
+            }
         };
 
-        const ranks = [
-            "RECRUIT DIVISION", "NOVICE BOXER", "AMATEUR STRIKER", 
-            "CONTENDER DECK", "PRIZEFIGHTER", "CHAMPION DIVISION", 
-            "UNDISPUTED", "HALL OF FAME", "POUND-FOR-POUND KING"
-        ];
+        // ==========================================
+        // 2. INITIALIZATION & LIFECYCLE
+        // ==========================================
+        document.addEventListener("DOMContentLoaded", () => {
+            loadStateFromStorage();
+            applyNightModeBasedOnTime();
+            renderInterface();
+            logSystem("SYSTEM READY. INTEGRATED OPERATIONAL PROTOCOLS LIVE.");
+            generateDailyModifiers();
+        });
 
-        const shadowboxingSyllabus = [
-            "• <b>Round 1:</b> Stance footprint integrity. Snappy standalone lead jabs while tracking geometric slide vectors.<br>• <b>Round 2:</b> Standard linear execution chains (1-2, 1-1-2). Full back leg torque extension.<br>• <b>Round 3:</b> Counter tracks. Throw a single jab, snap back to tight guard posture, parry, counter jab.",
-            "• <b>Round 1:</b> Drive linear steps into trailing right hand drops. Focus on structural 1-2 connections.<br>• <b>Round 2:</b> Rapid speed double jab lanes followed by maximum extension crosses. Pivot 45-degrees at conclusion.<br>• <b>Round 3:</b> Slipping mechanics. Lateral head displacements inside an imaginary punch path.",
-            "• <b>Round 1:</b> Hook rotational distribution fields. Run low body jab steps to disrupt guard tracks.<br>• <b>Round 2:</b> The 1-2-3 (Jab-Cross-Lead Hook) standard string pattern. Keep weight distributions balanced.<br>• <b>Round 3:</b> Roll under hooks. Deliver combinations, lower center of gravity depth, roll under return counter fire.",
-            "• <b>Round 1:</b> Check hook tracking. Step side angles with the lead foot while rotating hooks simultaneously.<br>• <b>Round 2:</b> Catching the jab line. Execute tight hand parries or small pull-aways to clear counters.<br>• <b>Round 3:</b> Deep pocket inside-boxing ranges. Keep hooks tight, short, and use clean arm frames to manipulate space.",
-            "• <b>Round 1:</b> Philly Shell structural setup or high guard variations depending on distance lines.<br>• <b>Round 2:</b> Counter timing traps. Displace head lines, absorb pressure, deploy heavy return hooks.<br>• <b>Round 3:</b> Side angle exits. Finish active boxing flurries and instantly step outside clear of counter lanes.",
-            "• <b>Round 1:</b> Deceptive visual feints. Drop shoulders or cycle partial lines to evoke reaction tracking states.<br>• <b>Round 2:</b> Classic pull-counter tracks. Evade jabs by moving upper torso backward, return clean rear crosses.<br>• <b>Round 3:</b> Multi-level combat sequences. Chain 4-5 dynamic punch streams across high-low line targets seamlessly.",
-            "• <b>Round 1:</b> Ring cutting movement strategies. Restrict your opponent's movement space without tailing them directly.<br>• <b>Round 2:</b> Pace switching variations. Shift between extremely rapid tracking shots and heavy impact drops.<br>• <b>Round 3:</b> Unorthodox counter tracking loops. Release punches out of active slips, duck frames, and shifting lines.",
-            "• <b>Round 1:</b> High-pressure pocket defense containment fields. Surving under heavy simulated attack strings.<br>• <b>Round 2:</b> Deliberate defensive baiting setups. Intentionally widen guard paths to trigger and trap a counter response.<br>• <b>Round 3:</b> Countering counter fighters. Feint initial strikes to trigger their trap, and intercept their counter attempt.",
-            "• <b>Round 1:</b> Pure system automation tracking. Zero kinetic energy waste profiles across complete rounds.<br>• <b>Round 2:</b> Seamless dynamic shifting stance conversions. Maintain perfect fight control from any structural configuration.<br>• <b>Round 3:</b> Flawless simultaneous defense/offense merging. Total automation of top-tier professional combat systems."
-        ];
-
-        const dailyMutations = [
-            { text: "STRIKING CORE FOCUS: Heavy Bag tasks grant +15 XP bonus returns.", task: 1, bonus: 15 },
-            { text: "STAMINA SPEED DAY: Roadwork completions yield +15 XP bonus returns.", task: 2, bonus: 15 },
-            { text: "SHADOW BOXING MIXER: Shadowboxing routines grant +15 XP bonus returns.", task: 0, bonus: 15 },
-            { text: "TACTICAL STRIP SYSTEM: Attribute Buff modifiers increased by 1.5x efficiency margins.", task: -1, bonus: 0 },
-            { text: "BALANCED TRAINING SPEED: All active matrix tasks grant a static +5 XP completion buff.", task: 99, bonus: 5 }
-        ];
-        let activeMutationIndex = 0;
-
-        // Visual Silent Timer Variables
-        let timerInterval = null;
-        let timerTimeLeft = 180;
-        let isTimerRestRound = false;
-        let timerRunning = false;
-
-        let pendingXp = 0;
-
-        function triggerVisualFlash() {
-            const display = document.getElementById('timerTime');
-            display.classList.add('visual-flash');
-            setTimeout(() => { display.classList.remove('visual-flash'); }, 3000);
+        function renderInterface() {
+            // Top Deck Displays
+            document.getElementById("userDisplay").innerText = state.username;
+            document.getElementById("levelDisplay").innerText = state.level;
+            document.getElementById("streakDisplay").innerText = state.streak;
+            
+            updateRankDisplayStrings();
+            updateExperienceProgressBars();
+            updateAttributeChassisBars();
+            evaluateGatekeeperCalculations();
         }
 
-        function toggleTimer() {
-            if (timerRunning) {
-                clearInterval(timerInterval);
-                timerRunning = false;
-                document.getElementById('timerStartBtn').innerText = "Start Round";
-                document.getElementById('timerStartBtn').classList.remove('active-run');
-                document.getElementById('timerStatus').innerText = "BOXING TIMER PAUSED";
+        // ==========================================
+        // 3. NAVIGATION MANAGEMENT
+        // ==========================================
+        function switchTab(tabId) {
+            state.activeTab = tabId;
+            
+            // Update DOM Nav Active Classes
+            document.querySelectorAll(".tab-btn").forEach(btn => btn.classList.remove("active"));
+            const activeBtn = document.getElementById(`tab-${tabId}`);
+            if(activeBtn) activeBtn.classList.add("active");
+
+            // Swap Viewable Node Cards
+            document.querySelectorAll(".app-page").forEach(page => page.classList.remove("active"));
+            const activePage = document.getElementById(`page-${tabId}`);
+            if(activePage) activePage.classList.add("active");
+
+            logSystem(`NAVIGATION MATRIX MUTATED TO: ${tabId.toUpperCase()}`);
+        }
+
+        // ==========================================
+        // 4. COMBAT MATRIX TASK PROTOCOLS
+        // ==========================================
+        function toggleTaskById(wrapperId, xpValue) {
+            // Event safety filtering for nested info triggers
+            if (window.event && window.event.target.classList.contains('info-trigger-btn')) return;
+
+            const wrapper = document.getElementById(wrapperId);
+            if (!wrapper) return;
+
+            if (state.tasks[wrapperId].completed) {
+                state.tasks[wrapperId].completed = false;
+                wrapper.classList.remove("checked");
+                adjustXPEngine(-xpValue);
+                logSystem(`REMOVED: ${state.tasks[wrapperId].blueprint} Matrix Protocol.`);
             } else {
-                timerRunning = true;
-                document.getElementById('timerStartBtn').innerText = "STOP TIMER";
-                document.getElementById('timerStartBtn').classList.add('active-run');
-                document.getElementById('timerStatus').innerText = isTimerRestRound ? "REST ROUND ENGAGED" : "WORK ROUND ACTIVE";
+                state.tasks[wrapperId].completed = true;
+                wrapper.classList.add("checked");
+                adjustXPEngine(xpValue);
+                logSystem(`EXECUTED: ${state.tasks[wrapperId].blueprint} Matrix Protocol.`);
+            }
+            saveStateToStorage();
+        }
+
+        function selectAllTasks() {
+            let interactionLogged = false;
+            Object.keys(state.tasks).forEach(id => {
+                if (!state.tasks[id].completed) {
+                    const wrapper = document.getElementById(id);
+                    if (wrapper) wrapper.classList.add("checked");
+                    state.tasks[id].completed = true;
+                    adjustXPEngine(state.tasks[id].xp);
+                    interactionLogged = true;
+                }
+            });
+            if(interactionLogged) logSystem("ALL MATRIX TARGETS CAPTURED.");
+            saveStateToStorage();
+        }
+
+        function toggleInspection(inspectId) {
+            if (window.event) window.event.stopPropagation(); // Avoid parent task triggering
+            const panel = document.getElementById(inspectId);
+            if (panel) {
+                panel.classList.toggle("active");
+            }
+        }
+
+        function deployMatrix() {
+            const deployBtn = document.getElementById("deployBtn");
+            deployBtn.classList.add("success");
+            deployBtn.innerText = "TRAINING ENCRYPTED & SUBMITTED";
+            logSystem("MATRIX LOCKED. CAREER METRICS CALCULATED AND SAVED.");
+            
+            setTimeout(() => {
+                deployBtn.classList.remove("success");
+                deployBtn.innerText = "Deploy Training Matrix";
+            }, 3000);
+        }
+
+        // ==========================================
+        // 5. XP ENGINE & PROGRESSION SYSTEM
+        // ==========================================
+        function adjustXPEngine(amount) {
+            if(state.isExamGateActive && amount > 0) {
+                logSystem("WARNING: ATTAINED XP DROPPED. PASS GATEKEEPER EXAM TO PROGRESS.");
+                return;
+            }
+
+            state.xp += amount;
+
+            // Process Level Up Thresholds
+            if (state.xp >= state.xpNeeded) {
+                while (state.xp >= state.xpNeeded) {
+                    state.xp -= state.xpNeeded;
+                    state.level++;
+                    state.pointsBank += 3; // Grant Attribute tokens
+                    logSystem(`👑 LEVEL UP DETECTED. CHASSIS LEVEL ${state.level} ATTAINED. +3 SKILL POINTS.`);
+                }
+            } else if (state.xp < 0) {
+                state.xp = 0;
+            }
+
+            evaluateGatekeeperCalculations();
+            updateExperienceProgressBars();
+            updateAttributeChassisBars();
+            saveStateToStorage();
+        }
+
+        function updateExperienceProgressBars() {
+            const xpPercentage = Math.min(100, Math.floor((state.xp / state.xpNeeded) * 100));
+            document.getElementById("xpBar").style.width = `${xpPercentage}%`;
+            document.getElementById("xpText").innerText = `${xpPercentage}%`;
+            document.getElementById("xpLabelText").innerText = `${state.xp}/${state.xpNeeded}`;
+
+            const rankPercentage = Math.min(100, Math.floor((state.careerRank / state.maxRanks) * 100));
+            document.getElementById("rankBar").style.width = `${rankPercentage}%`;
+            document.getElementById("rankText").innerText = `${rankPercentage}%`;
+            document.getElementById("rankLabelText").innerText = `${state.careerRank} / ${state.maxRanks} RANKS`;
+        }
+
+        function updateRankDisplayStrings() {
+            const rankTitles = [
+                "RECRUIT DIVISION", "NOVICE STRIKER", "AMATEUR CONTENDER", 
+                "REGIONAL CHASSIS", "APEX AGGRESSOR", "CHAMPIONSHIP CORE", 
+                "ELITE TECHNICIAN", "MASTER STRIKER", "GRAND COMBAT CORE"
+            ];
+            const rankIndex = Math.min(state.careerRank - 1, rankTitles.length - 1);
+            document.getElementById("rankDisplay").innerText = rankTitles[rankIndex];
+            
+            const activeBlueprint = state.careerRank >= 4 ? state.blueprints[2] : state.blueprints[1];
+            const titleNode = document.getElementById("inspect-title-task1");
+            const bodyNode = document.getElementById("inspect-body-task1");
+            if(titleNode) titleNode.innerText = activeBlueprint.title;
+            if(bodyNode) bodyNode.innerHTML = activeBlueprint.body;
+        }
+
+        function evaluateGatekeeperCalculations() {
+            if ((state.level === 5 || state.level === 10) && state.xp >= 90) {
+                state.isExamGateActive = true;
+                document.getElementById("gatekeeperPanel").classList.add("active");
+                logSystem("⚠️ ALERT: STRUCTURAL CAREER GATEKEEPER ONLINE. PROGRESSION BRICKED.");
+            } else {
+                state.isExamGateActive = false;
+                document.getElementById("gatekeeperPanel").classList.remove("active");
+            }
+        }
+
+        function passGatekeeper() {
+            if(state.careerRank < state.maxRanks) {
+                state.careerRank++;
+                state.level++; 
+                state.xp = 0;
+                state.isExamGateActive = false;
+                document.getElementById("gatekeeperPanel").classList.remove("active");
+                logSystem(`🔥 EXAM BREACHED. ADVANCED TO ${state.careerRank} RANK STANDING.`);
+                updateRankDisplayStrings();
+                renderInterface();
+                saveStateToStorage();
+            }
+        }
+
+        // ==========================================
+        // 6. CHASSIS ATTRIBUTE TRACKING MOTOR
+        // ==========================================
+        function upgradeStat(statKey) {
+            if (state.pointsBank > 0 && state.stats[statKey] < state.maxStatVal) {
+                state.stats[statKey]++;
+                state.pointsBank--;
+                logSystem(`UPGRADED CHASSIS ${statKey.toUpperCase()} TO: ${state.stats[statKey]}`);
+                updateAttributeChassisBars();
+                saveStateToStorage();
+            } else if (state.pointsBank <= 0) {
+                logSystem("REJECTED: INSUFFICIENT UNALLOCATED POINT POOL MARGINS.");
+            }
+        }
+
+        function reallocatePoints() {
+            let pointsToRefund = 0;
+            Object.keys(state.stats).forEach(key => {
+                pointsToRefund += (state.stats[key] - state.baseStats[key]);
+                state.stats[key] = state.baseStats[key];
+            });
+
+            state.pointsBank += pointsToRefund;
+            logSystem(`CHASSIS RE-CORE FLUSHED: REFUNDED ${pointsToRefund} DATA POINTS.`);
+            updateAttributeChassisBars();
+            saveStateToStorage();
+        }
+
+        function updateAttributeChassisBars() {
+            document.getElementById("pointsDisplay").innerText = state.pointsBank;
+            
+            Object.keys(state.stats).forEach(key => {
+                const valEl = document.getElementById(`val-${key}`);
+                const barEl = document.getElementById(`pbar-${key}`);
+                const plusBtn = document.getElementById(`btn-${key}`);
                 
-                timerInterval = setInterval(() => {
-                    timerTimeLeft--;
-                    if (timerTimeLeft <= 0) {
-                        triggerVisualFlash();
-                        if (!isTimerRestRound) {
-                            isTimerRestRound = true;
-                            timerTimeLeft = 60;
-                            document.getElementById('timerStatus').innerText = "REST ROUND ENGAGED";
-                        } else {
-                            isTimerRestRound = false;
-                            timerTimeLeft = 180;
-                            document.getElementById('timerStatus').innerText = "WORK ROUND ACTIVE";
-                        }
+                if (valEl) valEl.innerText = state.stats[key];
+                if (barEl) {
+                    const percentage = Math.min(100, Math.floor((state.stats[key] / state.maxStatVal) * 100));
+                    barEl.style.width = `${percentage}%`;
+                }
+                if (plusBtn) {
+                    plusBtn.disabled = (state.pointsBank <= 0 || state.stats[key] >= state.maxStatVal);
+                }
+            });
+
+            evaluateDynamicCombatStyle();
+        }
+
+        function evaluateDynamicCombatStyle() {
+            const { str, spd, sta, tac } = state.stats;
+            let archetype = "BALANCE HYBRID";
+
+            if(str > spd && str > sta && str > tac) archetype = "SLUGGER PRESSURE MACHINE";
+            else if(spd > str && spd > sta && spd > tac) archetype = "SPEED DEMON OUT-BOXER";
+            else if(sta > str && sta > spd && sta > tac) archetype = "IRON CHASSIS PRESSURE DOG";
+            else if(tac > str && tac > spd && tac > sta) archetype = "MASTER TECHNICIAN INTERCEPTOR";
+
+            const archDisplay = document.getElementById("styleArchetypeDisplay");
+            if(archDisplay) archDisplay.innerText = `STYLE: ${archetype}`;
+        }
+
+        // ==========================================
+        // 7. VISUAL SILENT BOXING TIMER
+        // ==========================================
+        function toggleTimer() {
+            const btn = document.getElementById("timerStartBtn");
+            
+            if (state.timer.isRunning) {
+                clearInterval(state.timer.instance);
+                state.timer.isRunning = false;
+                btn.innerText = "Resume Round";
+                btn.classList.remove("active-run");
+                document.getElementById("timerStatus").innerText = "BOXING TIMER PAUSED";
+            } else {
+                state.timer.isRunning = true;
+                btn.innerText = "Pause Round";
+                btn.classList.add("active-run");
+                document.getElementById("timerStatus").innerText = "ROUND LIVE - ENFORCE INTENSITY";
+                
+                state.timer.instance = setInterval(() => {
+                    state.timer.timeLeft--;
+                    renderTimerLayoutDisplay();
+
+                    if (state.timer.timeLeft <= 0) {
+                        clearInterval(state.timer.instance);
+                        state.timer.isRunning = false;
+                        executeTimerAlarmFlashFeedback();
                     }
-                    updateTimerDisplay();
                 }, 1000);
             }
         }
 
         function resetTimer() {
-            clearInterval(timerInterval);
-            timerRunning = false;
-            isTimerRestRound = false;
-            timerTimeLeft = 180;
-            document.getElementById('timerStartBtn').innerText = "Start Round";
-            document.getElementById('timerStartBtn').classList.remove('active-run');
-            document.getElementById('timerStatus').innerText = "BOXING TIMER IDLE";
-            document.getElementById('timerTime').classList.remove('visual-flash');
-            updateTimerDisplay();
+            clearInterval(state.timer.instance);
+            state.timer.isRunning = false;
+            state.timer.timeLeft = state.timer.duration;
+            
+            const btn = document.getElementById("timerStartBtn");
+            btn.innerText = "Start Round";
+            btn.classList.remove("active-run");
+            
+            const timerDisplay = document.getElementById("timerTime");
+            timerDisplay.classList.remove("visual-flash");
+            
+            document.getElementById("timerStatus").innerText = "BOXING TIMER IDLE";
+            renderTimerLayoutDisplay();
         }
 
-        function updateTimerDisplay() {
-            const mins = Math.floor(timerTimeLeft / 60);
-            const secs = timerTimeLeft % 60;
-            document.getElementById('timerTime').innerText = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        function renderTimerLayoutDisplay() {
+            const mins = Math.floor(state.timer.timeLeft / 60);
+            const secs = state.timer.timeLeft % 60;
+            document.getElementById("timerTime").innerText = 
+                `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
         }
 
-        function toggleNightMode() {
-            state.nightMode = !state.nightMode;
-            if(state.nightMode) {
-                document.body.classList.add('night-mode');
-            } else {
-                document.body.classList.remove('night-mode');
-            }
-            saveState();
+        function executeTimerAlarmFlashFeedback() {
+            const timerDisplay = document.getElementById("timerTime");
+            timerDisplay.classList.add("visual-flash");
+            document.getElementById("timerStatus").innerText = "ROUND COMPLETED. BREAK STANDBY.";
+            logSystem("🔔 VISUAL ALARM ALERT: COMBAT BOUNDARY CAP OVER. WORK PATTERN END.");
+            
+            state.streak++;
+            document.getElementById("streakDisplay").innerText = state.streak;
+            saveStateToStorage();
+        }
+
+        // ==========================================
+        // 8. LOGS & UTILITY SYSTEM ENGINE
+        // ==========================================
+        function logSystem(message) {
+            const logBox = document.getElementById("systemLog");
+            if (!logBox) return;
+            
+            const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+            logBox.innerHTML = `> [${timestamp}] ${message}<br>` + logBox.innerHTML;
+        }
+
+        function generateDailyModifiers() {
+            const modifiers = [
+                "⚡ DAILY MODIFIER ACTIVE: SPEED ATTRIBUTES EARN +15% BONUS MULTIPLIERS TONIGHT.",
+                "🪐 METABOLIC SHIFT ACTIVE: CORE STAMINA DRAIN INTENSIFIED. KEEP GUARDS FRAME HIGH.",
+                "🛡️ TACTICAL SIMULATION LOADED: BOXING DEFENSE METRICS ACCRUE DOUBLE CHASSIS INTEGRATION VALUE."
+            ];
+            const randomSelection = modifiers[Math.floor(Math.random() * modifiers.length)];
+            document.getElementById("mutationBanner").innerText = randomSelection;
         }
 
         function changeUsername() {
-            const newName = prompt("ENTER NEW FIGHTER SIGNATURE:", state.username);
-            if (newName && newName.trim() !== "") {
-                state.username = newName.trim().substring(0, 18);
-                logWrite(`Identity locked as: ${state.username}`);
-                saveState();
-                renderDashboard();
+            const currentName = state.username;
+            const targetName = prompt("COMMUNICATION DECK: RE-WRITE OPERATOR USERNAME CALLSIGN:", currentName);
+            if(targetName && targetName.trim() !== "") {
+                state.username = targetName.trim().toUpperCase();
+                document.getElementById("userDisplay").innerText = state.username;
+                logSystem(`CALLSIGN COMPILER EXECUTED: TARGET MODIFIED TO ${state.username}`);
+                saveStateToStorage();
             }
         }
 
-        function switchTab(tabName) {
-            document.querySelectorAll('.app-page').forEach(p => p.classList.remove('active'));
-            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-            
-            document.getElementById(`page-${tabName}`).classList.add('active');
-            document.getElementById(`tab-${tabName}`).classList.add('active');
-            window.scrollTo({ top: 0, behavior: 'instant' });
-        }
-
-        function toggleInspection(panelId) {
-            event.stopPropagation();
-            const panel = document.getElementById(panelId);
-            const isCurrentlyActive = panel.classList.contains('active');
-            document.querySelectorAll('.inspection-panel').forEach(p => p.classList.remove('active'));
-            if(!isCurrentlyActive) panel.classList.add('active');
-        }
-
-        function toggleTaskById(wrapperId, xpReward) {
-            if(state.gatekeeperActive) return;
-            const element = document.getElementById(wrapperId);
-            element.classList.toggle('checked');
-            
-            let taskIndex = 0;
-            if (wrapperId === 'wrapper-task2') taskIndex = 1;
-            if (wrapperId === 'wrapper-task3') taskIndex = 2;
-            
-            const isChecked = element.classList.contains('checked');
-            state.midWorkoutChecked[taskIndex] = isChecked;
-            
-            saveState();
-            recalculatePendingXp();
-        }
-
-        function recalculatePendingXp() {
-            pendingXp = 0;
-            const mult = (activeMutationIndex === 3) ? 1.5 : 1.0;
-            
-            const strBonus = Math.floor((state.stats.str - 10) * 0.5 * mult);
-            const spdBonus = Math.floor((state.stats.spd - 10) * 0.5 * mult);
-            const staBonus = Math.floor((state.stats.sta - 10) * 0.5 * mult);
-            const tacBonus = Math.floor((state.stats.tac - 10) * 0.5 * mult);
-
-            if (state.midWorkoutChecked[0]) {
-                let base = 30 + spdBonus + tacBonus;
-                if (activeMutationIndex === 2) base += dailyMutations[2].bonus;
-                if (activeMutationIndex === 4) base += dailyMutations[4].bonus;
-                pendingXp += base;
-            }
-            if (state.midWorkoutChecked[1]) {
-                let base = 40 + strBonus + staBonus;
-                if (activeMutationIndex === 0) base += dailyMutations[0].bonus;
-                if (activeMutationIndex === 4) base += dailyMutations[4].bonus;
-                pendingXp += base;
-            }
-            if (state.midWorkoutChecked[2]) {
-                let base = 30 + staBonus + spdBonus;
-                if (activeMutationIndex === 1) base += dailyMutations[1].bonus;
-                if (activeMutationIndex === 4) base += dailyMutations[4].bonus;
-                pendingXp += base;
-            }
-            
-            if (pendingXp > 0) {
-                document.getElementById('deployBtn').innerText = `Sync Active Sync Engine (+${pendingXp} XP)`;
-            } else {
-                document.getElementById('deployBtn').innerText = "Deploy Training Matrix";
+        function applyNightModeBasedOnTime() {
+            const currentHour = new Date().getHours();
+            if (currentHour >= 20 || currentHour < 6) {
+                document.body.classList.add("night-mode");
+                logSystem("LOW GLARE MONOCHROMATIC NIGHT OVERRIDE SHIELD INSTANTIATED.");
             }
         }
 
-        function selectAllTasks() {
-            if(state.gatekeeperActive) return;
-            state.midWorkoutChecked = [true, true, true];
-            document.querySelectorAll('.matrix-wrapper').forEach(w => w.classList.add('checked'));
-            saveState();
-            recalculatePendingXp();
-            logWrite("All training matrix tasks maxed out.");
-        }
-
-        function processStreakEngine() {
-            const todayStr = new Date().toDateString();
-            if (state.lastLoggedDate === null) {
-                state.streak = 1;
-                state.lastLoggedDate = todayStr;
-                return;
-            }
-            if (state.lastLoggedDate === todayStr) return;
-            
-            const yesterday = new Date();
-            yesterday.setDate(yesterday.getDate() - 1);
-            if (state.lastLoggedDate === yesterday.toDateString()) {
-                state.streak += 1;
-                state.lastLoggedDate = todayStr;
-            } else {
-                state.streak = 1;
-                state.lastLoggedDate = todayStr;
-            }
-        }
-
-        function processAutomaticStatProgression() {
-            let logNotes = [];
-            
-            if (state.midWorkoutChecked[0]) {
-                state.statXp.spd += 25;
-                state.statXp.tac += 25;
-                logNotes.push("Speed/Tactics +25 AXP");
-            }
-            if (state.midWorkoutChecked[1]) {
-                state.statXp.str += 25;
-                state.statXp.sta += 25;
-                logNotes.push("Strength/Stamina +25 AXP");
-            }
-            if (state.midWorkoutChecked[2]) {
-                state.statXp.sta += 25;
-                state.statXp.spd += 25;
-                logNotes.push("Stamina/Speed +25 AXP");
-            }
-
-            ['str', 'spd', 'sta', 'tac'].forEach(key => {
-                let currentStatCap = state.stats[key] * 10;
-                while (state.statXp[key] >= currentStatCap) {
-                    state.statXp[key] -= currentStatCap;
-                    state.stats[key] += 1;
-                    state.points += 1;
-                    logWrite(`💪 MUSCLE MEMORY UPGRADE: ${key.toUpperCase()} hit tier ${state.stats[key]}. Gained +1 Master Point.`);
-                    currentStatCap = state.stats[key] * 10;
-                }
-            });
-
-            if (logNotes.length > 0) logWrite(`AXP Applied: ${logNotes.join(" | ")}`);
-        }
-
-        function deployMatrix() {
-            if(pendingXp === 0) return;
-            if(state.gatekeeperActive) return;
-
-            processAutomaticStatProgression();
-
-            state.xp += pendingXp;
-            pendingXp = 0;
-            state.midWorkoutChecked = [false, false, false];
-
-            processStreakEngine();
-            checkXpLimits();
-            checkAchievements();
-
-            document.querySelectorAll('.matrix-wrapper').forEach(w => w.classList.remove('checked'));
-            document.querySelectorAll('.inspection-panel').forEach(p => p.classList.remove('active'));
-
-            const btn = document.getElementById('deployBtn');
-            btn.classList.add('success');
-            btn.innerText = "[ CORE MATRIX DATA SECURED ]";
-            
-            setTimeout(() => {
-                btn.classList.remove('success');
-                btn.innerText = "Deploy Training Matrix";
-                recalculatePendingXp();
-            }, 2000);
-
-            saveState();
-            renderDashboard();
-        }
-
-        function checkXpLimits() {
-            let nextLevelXp = state.level * 100;
-            
-            while (state.xp >= nextLevelXp) {
-                if (state.level % 5 === 0 && state.level > 0) {
-                    let targetRankIndex = Math.floor(state.level / 5);
-                    if (targetRankIndex > state.rankIndex) {
-                        state.overflowXp = state.xp - (nextLevelXp - 1);
-                        state.xp = nextLevelXp - 1; 
-                        state.gatekeeperActive = true;
-                        logWrite("⚠️ CAP ENCOUNTERED: PROMOTION PORTAL LOCKED UNTIL EXAM IS PASSED.");
-                        break;
-                    }
-                }
-                
-                state.xp -= nextLevelXp;
-                state.level += 1;
-                state.points += 2;
-                logWrite(`⚡ LEVEL ADVANCEMENT! Character hit Tier Level ${state.level}. Gained 2 Master Points.`);
-                nextLevelXp = state.level * 100;
-            }
-        }
-
-        function passGatekeeper() {
-            if(confirm("BREACH ENTRY MATRIX: Confirm execution of Rank Advancement Exam?")) {
-                state.rankIndex = Math.min(state.rankIndex + 1, ranks.length - 1);
-                state.gatekeeperActive = false;
-                state.achievements.apex = true;
-                
-                state.xp = state.overflowXp;
-                state.overflowXp = 0;
-                
-                logWrite(`🏆 EXAM CLEARED. Career Rank advanced to: ${ranks[state.rankIndex]}`);
-                checkXpLimits();
-                saveState();
-                renderDashboard();
-            }
-        }
-
-        function upgradeStat(statKey) {
-            if(state.points > 0) {
-                if(confirm(`MANUAL CUSTOMIZATION: Dedicate 1 Unallocated Master Point to boost ${statKey.toUpperCase()}?`)) {
-                    state.points -= 1;
-                    state.stats[statKey] += 1;
-                    logWrite(`Allocated Master Point to ${statKey.toUpperCase()}. Rating is now ${state.stats[statKey]}.`);
-                    checkAchievements();
-                    saveState();
-                    renderDashboard();
-                }
-            }
-        }
-
-        function reallocatePoints() {
-            let spentPoints = (state.stats.str - 10) + (state.stats.spd - 10) + (state.stats.sta - 10) + (state.stats.tac - 10);
-            if(spentPoints <= 0) {
-                alert("No points currently spent out of structural baselines.");
-                return;
-            }
-            if(confirm(`REALLOCATION RADAR: Reclaim all manually spent points back into Master Banks?`)) {
-                state.points += spentPoints;
-                state.stats = { str: 10, spd: 10, sta: 10, tac: 10 };
-                state.statXp = { str: 0, spd: 0, sta: 0, tac: 0 };
-                logWrite("↺ Points recalled. Attributes re-baselined.");
-                saveState();
-                renderDashboard();
-            }
-        }
-
-        // Real-Time Style Analyzer & Strict Tie-Breaking Matrix
-        function calculateFighterStyle() {
-            const { str, spd, sta, tac } = state.stats;
-            
-            // If all stats are uniform default baselines
-            if (str === spd && spd === sta && sta === tac) {
-                return "STYLE: MASTER TECHNICIAN";
-            }
-
-            // Build array map to solve highest value targets
-            let values = [
-                { name: "SLUGGER / PRESSURE TANK", score: str },
-                { name: "OUT-BOXER / SPEED GHOST", score: spd },
-                { name: "VOLUME STRIKER / CARDIO ENGINE", score: sta },
-                { name: "COUNTER STRIKER / TACTICIAN", score: tac }
-            ];
-
-            // Sort by absolute value first
-            values.sort((a, b) => b.score - a.score);
-
-            // Strict Hardcoded Tie-Breaker Rule Checklist: if 1st and 2nd scores tie, prioritize by syllabus index relevance
-            if (values[0].score === values[1].score) {
-                if (state.rankIndex % 2 === 0) {
-                    return `STYLE: ${values[0].name}`;
-                } else {
-                    return `STYLE: ${values[1].name}`;
-                }
-            }
-
-            return `STYLE: ${values[0].name}`;
-        }
-
-        // Profile Tracking Log Form Submission Interface
-        function submitWeightEntry() {
-            const inputField = document.getElementById('weightInputField');
-            const weightVal = parseFloat(inputField.value);
-            
-            if (isNaN(weightVal) || weightVal <= 0 || weightVal > 1000) {
-                alert("Invalid configuration. Input true numeric physical metrics.");
-                return;
-            }
-
-            const todayStr = new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-            
-            // Unshift new data straight into historical tracker array limits
-            state.weightHistory.unshift({ date: todayStr, weight: weightVal });
-            
-            // Constrain timeline historical scope to last 5 entries max
-            if (state.weightHistory.length > 5) {
-                state.weightHistory = state.weightHistory.slice(0, 5);
-            }
-
-            logWrite(`Weight profile telemetry captured: ${weightVal} LBS.`);
-            inputField.value = "";
-            saveState();
-            renderDashboard();
-        }
-
-        // iOS Keyboard Displacement Focus Reset Watcher Safeguard
         function forceIosKeyboardReset() {
-            setTimeout(() => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }, 60);
+            window.scrollTo(0, 0);
+            logSystem("VIEWPORT FOCUS POSITION STABILIZED.");
         }
 
-        // Renders weight history streams safely handling empty history arrays (First Entry Shield)
-        function renderWeightTimelineStream() {
-            const container = document.getElementById('trajectoryTimelineStream');
-            container.innerHTML = "";
-
-            if (state.weightHistory.length === 0) {
-                container.innerHTML = `<div class="trajectory-node">[ SYSTEM PRIMED ]</div>`;
-                return;
+        function submitWeightEntry() {
+            const input = document.getElementById("weightInputField");
+            if(input && input.value.trim() !== "") {
+                logSystem(`WEIGHT LOGGED SECURELY: ${input.value} LBS.`);
+                input.value = "";
             }
+        }
 
-            // Loop backwards or forwards depending on timeline flow orientation
-            for (let i = 0; i < state.weightHistory.length; i++) {
-                const current = state.weightHistory[i];
-                let deltaText = "BASE";
-                let deltaClass = "flat";
+        // ==========================================
+        // 9. LOCALSTORAGE DATA PERSISTENCE
+        // ==========================================
+        function saveStateToStorage() {
+            const structuralPackage = {
+                username: state.username,
+                level: state.level,
+                xp: state.xp,
+                careerRank: state.careerRank,
+                streak: state.streak,
+                pointsBank: state.pointsBank,
+                stats: state.stats
+            };
+            localStorage.setItem("combatCore_v5_save", JSON.stringify(structuralPackage));
+        }
 
-                // Check if a previous node exists on the timeline array to calculate differences
-                if (i < state.weightHistory.length - 1) {
-                    const previous = state.weightHistory[i + 1];
-                    const diff = current.weight - previous.weight;
-                    
-                    if (diff < 0) {
-                        deltaText = `↓ ${Math.abs(diff).toFixed(1)} LBS`;
-                        deltaClass = "down";
-                    } else if (diff > 0) {
-                        deltaText = `↑ ${diff.toFixed(1)} LBS`;
-                        deltaClass = "up";
-                    } else {
-                        deltaText = "FLAT";
-                        deltaClass = "flat";
-                    }
-                } else if (state.weightHistory.length > 1) {
-                    // Last item but history contains entries: display start point reference
-                    deltaText = "START";
-                    deltaClass = "flat";
+        function loadStateFromStorage() {
+            const packageString = localStorage.getItem("combatCore_v5_save");
+            if (!packageString) return;
+            try {
+                const externalPackage = JSON.parse(packageString);
+                if (externalPackage) {
+                    state.username = externalPackage.username || state.username;
+                    state.level = externalPackage.level || state.level;
+                    state.xp = externalPackage.xp || state.xp;
+                    state.careerRank = externalPackage.careerRank || state.careerRank;
+                    state.streak = externalPackage.streak || state.streak;
+                    state.pointsBank = externalPackage.pointsBank || state.pointsBank;
+                    state.stats = externalPackage.stats || state.stats;
                 }
-
-                const node = document.createElement('div');
-                node.className = "trajectory-node";
-                node.innerHTML = `
-                    <span style="color:#fff; font-weight:bold;">${current.weight} lbs</span>
-                    <span>${current.date}</span>
-                    <span class="delta-tag ${deltaClass}">${deltaText}</span>
-                `;
-                container.appendChild(node);
+            } catch (e) {
+                logSystem("CRITICAL DATABASE CORRUPTION DETECTED. RESTORING COMPILER CACHE.");
             }
-        }
-
-        // Render Analytics Charts with Absolute Math Limit Clamps
-        function renderProfileCharts() {
-            // Chart 1: Kinetic Bias Slider Calculations
-            const { str, spd, sta } = state.stats;
-            const strikingPower = str;
-            const mobilityPower = (spd + sta) / 2;
-            const totalBiasSum = strikingPower + mobilityPower;
-            
-            let biasPct = 50; // Balanced middle base default
-            if (totalBiasSum > 0) {
-                biasPct = (mobilityPower / totalBiasSum) * 100;
-            }
-            
-            // Boundary Clamp Protective Layout Wraps
-            biasPct = Math.max(5, Math.min(95, biasPct));
-            
-            // Render with short debounce delay to ensure zero layout stutters
-            setTimeout(() => {
-                document.getElementById('kineticBiasPin').style.left = `${biasPct}%`;
-            }, 100);
-
-            // Chart 3: Potential Unlocked Tale of Tape Capacity Bars
-            // Scale metric outputs assuming max possible unlocked cap tier is 50 points
-            ['str', 'spd', 'sta', 'tac'].forEach(k => {
-                const statVal = state.stats[k];
-                const unlockedCapacityPct = Math.max(0, Math.min(100, (statVal / 50) * 100));
-                
-                document.getElementById(`pfill-${k}`).style.width = `${unlockedCapacityPct}%`;
-                document.getElementById(`ptext-${k}`).innerText = `${Math.floor(unlockedCapacityPct)}%`;
-            });
-        }
-
-        function checkAchievements() {
-            if (state.streak >= 3 && !state.achievements.road) {
-                state.achievements.road = true;
-                logWrite("🏆 ACHIEVEMENT UNLOCKED: ROAD WARRIOR");
-            }
-            if (state.stats.str >= 15 && !state.achievements.heavy) {
-                state.achievements.heavy = true;
-                logWrite("🏆 ACHIEVEMENT UNLOCKED: HEAVY HITTER");
-            }
-            if (state.stats.sta >= 15 && !state.achievements.iron) {
-                state.achievements.iron = true;
-                logWrite("🏆 ACHIEVEMENT UNLOCKED: IRON LUNG");
-            }
-        }
-
-        function checkResetUnlock() {
-            const val = document.getElementById('resetUnlockInput').value.trim().toUpperCase();
-            document.getElementById('hardResetBtn').disabled = (val !== "RESET");
-        }
-
-        function logWrite(text) {
-            const logBox = document.getElementById('systemLog');
-            logBox.innerHTML += `<br>> ${text}`;
-            logBox.scrollTop = logBox.scrollHeight;
-        }
-
-        function saveState() {
-            localStorage.setItem('boxingAppState_v5_0_master', JSON.stringify(state));
-        }
-
-        function loadState() {
-            let cached = localStorage.getItem('boxingAppState_v5_0_master');
-            if(!cached) cached = localStorage.getItem('boxingAppState_v5_0');
-            if(!cached) cached = localStorage.getItem('boxingAppState_v4_1');
-            
-            if(cached) {
-                const parsed = JSON.parse(cached);
-                // Safe Data Migration Field: Merge parsed cache objects onto baseline empty structures cleanly
-                state = Object.assign({}, state, parsed);
-                
-                if(state.nightMode) {
-                    document.body.classList.add('night-mode');
-                }
-                
-                if(state.lastLoggedDate) {
-                    const todayStr = new Date().toDateString();
-                    const yesterday = new Date();
-                    yesterday.setDate(yesterday.getDate() - 1);
-                    if(state.lastLoggedDate !== todayStr && state.lastLoggedDate !== yesterday.toDateString()) {
-                        logWrite(`Streak sequence broke. Last workout logged on: ${state.lastLoggedDate}`);
-                        state.streak = 0;
-                    }
-                }
-            }
-
-            const dayNum = new Date().getDate();
-            activeMutationIndex = dayNum % dailyMutations.length;
-            document.getElementById('mutationBanner').innerText = `DAILY MODIFIER // ${dailyMutations[activeMutationIndex].text}`;
-
-            state.midWorkoutChecked.forEach((isChecked, i) => {
-                const wrappers = ['wrapper-task1', 'wrapper-task2', 'wrapper-task3'];
-                if(isChecked) document.getElementById(wrappers[i]).classList.add('checked');
-            });
-
-            renderDashboard();
-            recalculatePendingXp();
-        }
-
-        function renderDashboard() {
-            document.getElementById('userDisplay').innerText = state.username;
-            document.getElementById('rankDisplay').innerText = ranks[state.rankIndex];
-            document.getElementById('levelDisplay').innerText = state.level;
-            document.getElementById('streakDisplay').innerText = state.streak;
-
-            const nextLevelXp = state.level * 100;
-            const xpPct = (state.xp / nextLevelXp) * 100;
-            document.getElementById('xpBar').style.width = `${xpPct}%`;
-            document.getElementById('xpText').innerText = `${Math.floor(xpPct)}%`;
-            document.getElementById('xpLabelText').innerText = `${state.xp} / ${nextLevelXp} XP`;
-
-            const rankPct = ((state.rankIndex + 1) / ranks.length) * 100;
-            document.getElementById('rankBar').style.width = `${rankPct}%`;
-            document.getElementById('rankText').innerText = `${Math.floor(rankPct)}%`;
-            document.getElementById('rankLabelText').innerText = `${state.rankIndex + 1} / ${ranks.length} RANKS`;
-
-            document.getElementById('inspect-title-task1').innerText = `[${ranks[state.rankIndex]}] Shadowboxing Blueprint`;
-            document.getElementById('inspect-body-task1').innerHTML = shadowboxingSyllabus[state.rankIndex];
-
-            const mult = (activeMutationIndex === 3) ? 1.5 : 1.0;
-            const strB = Math.floor((state.stats.str - 10) * 0.5 * mult);
-            const spdB = Math.floor((state.stats.spd - 10) * 0.5 * mult);
-            const staB = Math.floor((state.stats.sta - 10) * 0.5 * mult);
-            const tacB = Math.floor((state.stats.tac - 10) * 0.5 * mult);
-
-            document.getElementById('reward-task1').innerText = `+${30 + spdB + tacB} XP | +Speed & Tactics AXP`;
-            document.getElementById('reward-task2').innerText = `+${40 + strB + staB} XP | +Strength & Stamina AXP`;
-            document.getElementById('reward-task3').innerText = `+${30 + staB + spdB} XP | +Stamina & Speed AXP`;
-
-            if (state.gatekeeperActive) {
-                document.getElementById('gatekeeperPanel').classList.add('active');
-                document.getElementById('deployBtn').style.display = 'none';
-            } else {
-                document.getElementById('gatekeeperPanel').classList.remove('active');
-                document.getElementById('deployBtn').style.display = 'block';
-            }
-
-            // Chassis Value Displays & Style Computation Injections
-            document.getElementById('pointsDisplay').innerText = state.points;
-            document.getElementById('styleArchetypeDisplay').innerText = calculateFighterStyle();
-            
-            ['str', 'spd', 'sta', 'tac'].forEach(k => {
-                document.getElementById(`val-${k}`).innerText = state.stats[k];
-                let maxProgress = state.stats[k] * 10;
-                let pct = (state.statXp[k] / maxProgress) * 100;
-                document.getElementById(`pbar-${k}`).style.width = `${pct}%`;
-                document.getElementById(`btn-${k}`).disabled = (state.points <= 0);
-            });
-
-            // Profiles View Rendering Steps
-            renderWeightTimelineStream();
-            renderProfileCharts();
-
-            // Syllabus Cards Engine Lists
-            for(let i=0; i<ranks.length; i++) {
-                const tierCard = document.getElementById(`tier-${i}`);
-                const label = document.getElementById(`tstat-${i}`);
-                if(tierCard) {
-                    if(i === state.rankIndex) {
-                        tierCard.className = "syllabus-tier current";
-                        label.innerText = "ACTIVE DIVISION";
-                        label.style.color = "var(--accent-blue)";
-                    } else if (i < state.rankIndex) {
-                        tierCard.className = "syllabus-tier";
-                        label.innerText = "COMPLETED";
-                        label.style.color = "var(--accent-green)";
-                    } else {
-                        tierCard.className = "syllabus-tier";
-                        label.innerText = "LOCKED";
-                        label.style.color = "var(--accent-dim)";
-                    }
-                }
-            }
-
-            if(state.achievements.road) document.getElementById('badge-road').classList.add('unlocked');
-            if(state.achievements.heavy) document.getElementById('badge-heavy').classList.add('unlocked');
-            if(state.achievements.iron) document.getElementById('badge-iron').classList.add('unlocked');
-            if(state.achievements.apex) document.getElementById('badge-apex').classList.add('unlocked');
-        }
-
-        function hardResetSystem() {
-            if(confirm("WIPE LOGIC TRACKERS: Execute complete local database format back to Level 1 factory defaults?")) {
-                localStorage.removeItem('boxingAppState_v5_0_master');
-                localStorage.removeItem('boxingAppState_v5_0');
-                localStorage.removeItem('boxingAppState_v4_1');
-                state = {
-                    username: "FIGHTER_01",
-                    level: 1,
-                    xp: 0,
-                    streak: 0,
-                    points: 0,
-                    rankIndex: 0,
-                    stats: { str: 10, spd: 10, sta: 10, tac: 10 },
-                    statXp: { str: 0, spd: 0, sta: 0, tac: 0 },
-                    gatekeeperActive: false,
-                    lastLoggedDate: null,
-                    overflowXp: 0,
-                    achievements: { road: false, heavy: false, iron: false, apex: false },
-                    midWorkoutChecked: [false, false, false],
-                    nightMode: false,
-                    weightHistory: []
-                };
-                pendingXp = 0;
-                document.getElementById('resetUnlockInput').value = "";
-                document.getElementById('hardResetBtn').disabled = true;
-                document.getElementById('systemLog').innerHTML = "> SYSTEM ENGINES FLUSHED CLEAN.";
-                document.body.classList.remove('night-mode');
-                
-                document.querySelectorAll('.matrix-wrapper').forEach(w => w.classList.remove('checked'));
-                document.querySelectorAll('.inspection-panel').forEach(p => p.classList.remove('active'));
-                
-                resetTimer();
-                saveState();
-                renderDashboard();
-                switchTab('dashboard');
-            }
-        }
-
-        window.onload = function() {
-            loadState();
         }
     </script>
 </body>
