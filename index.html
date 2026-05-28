@@ -7,7 +7,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Combat Core">
     
-    <title>COMBAT CORE v5.3 EMBLEM EDITION</title>
+    <title>COMBAT CORE v6.0 PERFECT EDITION</title>
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Squada+One&display=swap" rel="stylesheet">
     
     <style>
@@ -43,11 +43,11 @@
         }
 
         body {
-            padding: 20px 15px 120px 15px;
+            padding: 10px 15px 120px 15px;
             transition: background 0.3s, color 0.3s;
         }
 
-        /* Night Mode Low Glare Monochromatic Overrides */
+        /* Night Mode Low Glare Overrides */
         body.night-mode {
             --bg-color: #030406;
             --panel-color: #090b10;
@@ -60,13 +60,54 @@
             --accent-red: #742a2a;
         }
 
+        /* Full Screen Level Up Splash Overlay */
+        .level-up-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(8, 10, 15, 0.95);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            padding: 20px;
+        }
+        .level-up-overlay.active {
+            display: flex;
+        }
+        .level-up-box {
+            border: 3px solid var(--accent-blue);
+            background: var(--panel-color);
+            padding: 40px 20px;
+            box-shadow: 0 0 50px rgba(135, 206, 235, 0.3);
+            max-width: 90%;
+            width: 340px;
+        }
+        .level-up-title {
+            font-family: 'Squada One', sans-serif;
+            font-size: 3.5rem;
+            color: var(--accent-blue);
+            line-height: 1;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            animation: textPulse 0.6s ease infinite alternate;
+        }
+        @keyframes textPulse {
+            from { transform: scale(0.98); text-shadow: 0 0 5px rgba(135,206,235,0.2); }
+            to { transform: scale(1.02); text-shadow: 0 0 20px rgba(135,206,235,0.6); }
+        }
+
         /* Glassmorphism Navigation Deck Header */
         header {
             background: rgba(17, 21, 32, 0.75);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border: 2px solid var(--border-color);
-            padding: 18px 15px;
+            padding: 15px;
             margin-bottom: 15px;
             text-align: center;
             position: sticky;
@@ -75,16 +116,45 @@
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
         }
 
+        .header-top-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+            position: relative;
+        }
+
         .username-display {
             font-size: 1.15rem;
             color: #fff;
             letter-spacing: 1px;
-            margin-bottom: 6px;
             text-transform: uppercase;
             cursor: pointer;
             border-bottom: 1px dashed var(--accent-dim);
-            display: inline-block;
             padding: 2px 6px;
+        }
+
+        .collapse-toggle-btn {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--accent-dim);
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            cursor: pointer;
+        }
+
+        /* Collapsible Core Data Shell */
+        .header-collapsible-content {
+            max-height: 500px;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .header-collapsible-content.collapsed {
+            max-height: 0px;
         }
 
         /* College Font Style Applied to Rank Status Plates */
@@ -94,6 +164,7 @@
             justify-content: center;
             gap: 10px;
             margin-bottom: 3px;
+            margin-top: 5px;
         }
 
         .rank-title {
@@ -137,14 +208,14 @@
             width: 0%;
             height: 100%;
             background: linear-gradient(90deg, #3a86c8, var(--accent-blue));
-            transition: width 0.4s ease;
+            transition: width 0.3s ease;
         }
 
         .rank-bar {
             width: 11%;
             height: 100%;
             background: linear-gradient(90deg, #6b21a8, var(--accent-purple));
-            transition: width 0.6s ease;
+            transition: width 0.3s ease;
         }
 
         .bar-text {
@@ -333,7 +404,7 @@
             margin-bottom: 2px;
         }
         .timer-display {
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             color: #fff;
             margin-bottom: 8px;
             font-weight: bold;
@@ -363,23 +434,6 @@
         .timer-btn.active-run {
             border-color: var(--accent-red);
             color: var(--accent-red);
-        }
-
-        .deploy-btn {
-            width: 100%;
-            background: linear-gradient(180deg, #161f30, #0a0f18);
-            color: #fff;
-            border: 2px solid var(--accent-blue);
-            padding: 16px;
-            font-size: 1.1rem;
-            cursor: pointer;
-            text-transform: uppercase;
-            margin-top: 10px;
-        }
-        .deploy-btn.success {
-            border-color: var(--accent-green);
-            color: var(--accent-green);
-            background: rgba(74, 222, 128, 0.1);
         }
 
         /* Attribute Training Core System Layouts */
@@ -460,18 +514,18 @@
             text-transform: uppercase;
         }
 
-        /* Profile Tracking */
+        /* Weight Deck Panel Styles */
         .weight-input-row {
             display: flex;
             gap: 10px;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
         .weight-input {
             background: #000;
             border: 1px solid var(--border-color);
             color: #fff;
-            padding: 10px;
-            font-size: 1rem;
+            padding: 12px;
+            font-size: 1.2rem;
             width: 60%;
             text-align: center;
         }
@@ -483,6 +537,21 @@
             font-size: 0.85rem;
             text-transform: uppercase;
             cursor: pointer;
+        }
+        .quick-weight-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            margin-top: 5px;
+        }
+        .quick-w-btn {
+            background: var(--panel-color);
+            border: 1px solid var(--border-color);
+            color: var(--accent-blue);
+            padding: 10px 0;
+            font-size: 0.95rem;
+            cursor: pointer;
+            font-weight: bold;
         }
 
         /* Gym Rank Guide Section Layouts */
@@ -510,15 +579,21 @@
         .syllabus-tier.current .tier-status { color: var(--accent-blue); }
         .tier-reqs { font-size: 0.8rem; color: var(--accent-dim); padding-left: 10px; line-height: 1.4; border-left: 1px solid rgba(255,255,255,0.05); }
 
-        .system-log-box {
-            background: #050608;
-            border: 1px solid var(--border-color);
-            padding: 10px;
-            font-size: 0.8rem;
-            color: var(--accent-blue);
-            height: 85px;
-            overflow-y: auto;
-            margin-top: 15px;
+        .deploy-btn {
+            width: 100%;
+            background: linear-gradient(180deg, #161f30, #0a0f18);
+            color: #fff;
+            border: 2px solid var(--accent-blue);
+            padding: 16px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            text-transform: uppercase;
+            margin-top: 10px;
+        }
+        .deploy-btn.success {
+            border-color: var(--accent-green);
+            color: var(--accent-green);
+            background: rgba(74, 222, 128, 0.1);
         }
 
         .gatekeeper-screen {
@@ -527,41 +602,57 @@
             border: 2px solid var(--accent-red);
             padding: 22px;
             text-align: center;
+            margin-bottom: 15px;
         }
         .gatekeeper-screen.active { display: block; }
     </style>
 </head>
 <body>
 
+    <!-- Full Screen Reward Splash Panel -->
+    <div class="level-up-overlay" id="levelUpSplash" onclick="dismissLevelUpSplash()">
+        <div class="level-up-box">
+            <div class="level-up-title">LEVEL UP!</div>
+            <p style="font-size: 1.1rem; color: #fff; margin-bottom: 15px; letter-spacing: 1px;">COMBAT STANDING INCREASED</p>
+            <p style="font-size: 0.9rem; color: var(--accent-green);">+3 ATTRIBUTE POINTS UNLOCKED</p>
+            <p style="font-size: 0.75rem; color: var(--accent-dim); margin-top: 25px;">[ TAP TO RETURN TO GYM ]</p>
+        </div>
+    </div>
+
     <header>
-        <div><span class="username-display" id="userDisplay" onclick="changeUsername()">FIGHTER_01</span></div>
+        <div class="header-top-row">
+            <span class="username-display" id="userDisplay" onclick="changeUsername()">FIGHTER_01</span>
+            <button class="collapse-toggle-btn" onclick="toggleHeaderCollapse()" id="collapseBtn">▲</button>
+        </div>
         
-        <!-- Dynamic Emblem Container Row -->
-        <div class="rank-title-container">
-            <span class="rank-glove-emblem" id="gloveEmblem">🥊</span>
-            <span class="rank-title" id="rankDisplay">RECRUIT DIVISION</span>
-        </div>
+        <!-- Collapsible Core Data Shell Container -->
+        <div class="header-collapsible-content" id="headerCollapsible">
+            <div class="rank-title-container">
+                <span class="rank-glove-emblem" id="gloveEmblem">🥊</span>
+                <span class="rank-title" id="rankDisplay">RECRUIT DIVISION</span>
+            </div>
 
-        <div class="level-display">FIGHTER LEVEL: <span id="levelDisplay" style="color:var(--accent-blue)">1</span></div>
-        
-        <div class="progress-label"><span>DAILY XP BREAKDOWN</span><span id="xpLabelText" style="color:var(--accent-blue)">0/100</span></div>
-        <div class="bar-container">
-            <div class="xp-bar" id="xpBar"></div>
-            <div class="bar-text" id="xpText">0%</div>
-        </div>
+            <div class="level-display">FIGHTER LEVEL: <span id="levelDisplay" style="color:var(--accent-blue)">1</span></div>
+            
+            <div class="progress-label"><span>DAILY XP PROGRESS</span><span id="xpLabelText" style="color:var(--accent-blue)">0/100</span></div>
+            <div class="bar-container">
+                <div class="xp-bar" id="xpBar"></div>
+                <div class="bar-text" id="xpText">0%</div>
+            </div>
 
-        <div class="progress-label"><span>CAREER DIVISION PROGRESS</span><span id="rankLabelText" style="color:var(--accent-purple)">1 / 9 RANKS</span></div>
-        <div class="bar-container">
-            <div class="rank-bar" id="rankBar"></div>
-            <div class="bar-text" id="rankText">11%</div>
-        </div>
+            <div class="progress-label"><span>CAREER DIVISION PROGRESS</span><span id="rankLabelText" style="color:var(--accent-purple)">1 / 9 RANKS</span></div>
+            <div class="bar-container">
+                <div class="rank-bar" id="rankBar"></div>
+                <div class="bar-text" id="rankText">11%</div>
+            </div>
 
-        <div class="streak-fire">STREAK: <span id="streakDisplay">0</span> DAYS 🔥</div>
+            <div class="streak-fire">STREAK: <span id="streakDisplay">0</span> DAYS 🔥</div>
+        </div>
     </header>
 
     <div class="mutation-banner" id="mutationBanner">LOADING DAILY FOCUS TARGET MODIFIERS...</div>
 
-    <!-- Modern Gym Navigation Labels -->
+    <!-- Gym Navigation Deck Matrix Layout -->
     <div class="nav-tabs">
         <button class="tab-btn active" id="tab-tasks" onclick="switchTab('tasks')">Daily Tasks</button>
         <button class="tab-btn" id="tab-stats" onclick="switchTab('stats')">Fighter Stats</button>
@@ -572,6 +663,7 @@
     <!-- PAGE: DAILY TASKS (Formerly Matrix) -->
     <div id="page-tasks" class="app-page active">
         
+        <!-- AUTO-ADVANCING BOXING TIMER MODULE -->
         <div class="timer-container">
             <div class="timer-status-label" id="timerStatus">BOXING TIMER IDLE</div>
             <div class="timer-display" id="timerTime">03:00</div>
@@ -579,6 +671,12 @@
                 <button class="timer-btn" id="timerStartBtn" onclick="toggleTimer()">Start Round</button>
                 <button class="timer-btn" onclick="resetTimer()">Reset</button>
             </div>
+        </div>
+
+        <div class="gatekeeper-screen" id="gatekeeperPanel">
+            <h2 style="color:var(--accent-red); margin-bottom: 10px;">⚠️ SKILL TEST DETECTED</h2>
+            <p style="font-size:0.9rem; margin-bottom: 15px; color:var(--accent-dim);">You have reached your experience limit. You must perform and pass your division's physical test with a trainer to move forward.</p>
+            <button class="deploy-btn" style="border-color:var(--accent-green); color:var(--accent-green); margin-top:0;" onclick="passGatekeeper()">LOG TEST AS PASSED</button>
         </div>
 
         <div class="panel">
@@ -640,21 +738,6 @@
                     <div id="inspect-body-task3">Loading details...</div>
                 </div>
             </div>
-
-            <button class="deploy-btn" id="deployBtn" onclick="deployMatrix()">Submit Finished Training</button>
-        </div>
-
-        <div class="gatekeeper-screen" id="gatekeeperPanel">
-            <h2 style="color:var(--accent-red); margin-bottom: 10px;">⚠️ SKILL TEST DETECTED</h2>
-            <p style="font-size:0.9rem; margin-bottom: 15px; color:var(--accent-dim);">You have reached your experience limit. You must perform and pass your division's physical test with a trainer to move forward.</p>
-            <button class="deploy-btn" style="border-color:var(--accent-green); color:var(--accent-green);" onclick="passGatekeeper()">LOG TEST AS PASSED</button>
-        </div>
-
-        <div class="panel" style="margin-top: 15px;">
-            <div class="panel-title-row" style="border:none; margin:0;">
-                <span class="panel-title">System Activity Log</span>
-            </div>
-            <div class="system-log-box" id="systemLog">> SECURE APP CONSOLE ONLINE...</div>
         </div>
     </div>
 
@@ -746,8 +829,16 @@
                 <span class="panel-title">Weight Tracking Deck</span>
             </div>
             <div class="weight-input-row">
-                <input type="number" step="0.1" class="weight-input" id="weightInputField" placeholder="LBS (e.g. 178.5)" onblur="forceIosKeyboardReset()">
+                <input type="number" step="0.1" class="weight-input" id="weightInputField" placeholder="0.0" onblur="forceIosKeyboardReset()">
                 <button class="weight-submit-btn" onclick="submitWeightEntry()">Log Weight</button>
+            </div>
+            
+            <!-- Tap-To-Add Quick Adjust Grid (No Keyboard Setup Required) -->
+            <div class="quick-weight-grid">
+                <button class="quick-w-btn" onclick="quickAdjustWeight(-5)">-5 LBS</button>
+                <button class="quick-w-btn" onclick="quickAdjustWeight(-1)">-1 LB</button>
+                <button class="quick-w-btn" onclick="quickAdjustWeight(1)">+1 LB</button>
+                <button class="quick-w-btn" onclick="quickAdjustWeight(5)">+5 LBS</button>
             </div>
         </div>
     </div>
@@ -758,7 +849,7 @@
             <div class="panel-title-row">
                 <span class="panel-title">Gym Progression Steps</span>
             </div>
-            <!-- Dynamic Content Hook -->
+            <!-- Dynamic Content Hook Structure -->
         </div>
     </div>
 
@@ -767,7 +858,7 @@
     ========================================== -->
     <script>
         // ==========================================
-        // 1. GLOBAL CORE STATE
+        // 1. GLOBAL CORE ENGINE STATE
         // ==========================================
         let state = {
             username: "FIGHTER_01",
@@ -780,12 +871,22 @@
             pointsBank: 0,
             activeTab: 'tasks',
             isExamGateActive: false,
+            headerCollapsed: false,
+            currentWeightDisplay: 180.0,
             
             stats: { str: 10, spd: 10, sta: 10, tac: 10 },
             baseStats: { str: 10, spd: 10, sta: 10, tac: 10 },
             maxStatVal: 100,
 
-            timer: { duration: 180, timeLeft: 180, instance: null, isRunning: false },
+            // AUTO CONTINUOUS TIMER TRACKING MODULE STATE
+            timer: { 
+                workDuration: 180, 
+                restDuration: 60,
+                timeLeft: 180, 
+                instance: null, 
+                isRunning: false,
+                mode: 'WORK' // WORK or REST
+            },
 
             tasks: {
                 'wrapper-task1': { completed: false, xp: 30, blueprint: 'Shadowboxing' },
@@ -793,9 +894,7 @@
                 'wrapper-task3': { completed: false, xp: 30, blueprint: 'Footwork' }
             },
 
-            // RE-ENGINEERED COMPLETELY CLEAN JARGON-FREE DESCRIPTIONS
             rankMissions: {
-                // Tier 1 - Rank 1 to 3
                 beginner: {
                     task1: {
                         name: "> [Rank 1-3 Basics] Shadowbox: Simple 1-2 Drilling",
@@ -813,7 +912,6 @@
                         body: "• <b>Objective:</b> Keep your balance so you don't get knocked over easily.<br>• <b>Execution:</b> 15 minutes. Move around. Step forward, backward, left, and right. <b>The Golden Rule:</b> Never let your feet touch or cross each other. Keep a wide, solid gap between your steps so you are always ready to move."
                     }
                 },
-                // Tier 2 - Rank 4 to 6
                 intermediate: {
                     task1: {
                         name: "> [Rank 4-6 Medium] Shadowbox: Head & Body Shifts",
@@ -831,7 +929,6 @@
                         body: "• <b>Objective:</b> Step off to the side to avoid pressure coming right at you.<br>• <b>Execution:</b> 15 minutes. Throw a punch combination, immediately step your front foot wide to the side, and spin your back foot 90 degrees to face a completely new angle."
                     }
                 },
-                // Tier 3 - Rank 7 to 9
                 advanced: {
                     task1: {
                         name: "> [Rank 7-9 Elite] Shadowbox: Fake and Counter",
@@ -859,7 +956,6 @@
             loadStateFromStorage();
             applyNightModeBasedOnTime();
             renderInterface();
-            logSystem("GYM OPERATIONS SECURE. SECTIONS UPDATED TO MODERN LABELS.");
             generateDailyModifiers();
         });
 
@@ -867,6 +963,7 @@
             document.getElementById("userDisplay").innerText = state.username;
             document.getElementById("levelDisplay").innerText = state.level;
             document.getElementById("streakDisplay").innerText = state.streak;
+            document.getElementById("weightInputField").placeholder = state.currentWeightDisplay.toFixed(1);
             
             updateRankDisplayStrings();
             updateExperienceProgressBars();
@@ -877,7 +974,25 @@
         }
 
         // ==========================================
-        // 3. DYNAMIC MISSION INJECTOR MOTOR
+        // 3. COLLAPSIBLE FOCUS DESIGN INTERFACE
+        // ==========================================
+        function toggleHeaderCollapse() {
+            const container = document.getElementById("headerCollapsible");
+            const btn = document.getElementById("collapseBtn");
+            state.headerCollapsed = !state.headerCollapsed;
+            
+            if (state.headerCollapsed) {
+                container.classList.add("collapsed");
+                btn.innerText = "▼";
+            } else {
+                container.classList.remove("collapsed");
+                btn.innerText = "▲";
+            }
+            saveStateToStorage();
+        }
+
+        // ==========================================
+        // 4. DYNAMIC MISSION INJECTOR MOTOR
         // ==========================================
         function buildDynamicMissionsByRank() {
             let activeSet = state.rankMissions.beginner; 
@@ -899,10 +1014,22 @@
             document.getElementById("name-task3").innerText = activeSet.task3.name;
             document.getElementById("inspect-title-task3").innerText = activeSet.task3.title;
             document.getElementById("inspect-body-task3").innerHTML = activeSet.task3.body;
+            
+            // Clean dynamic interface checkbox state syncing
+            Object.keys(state.tasks).forEach(id => {
+                const element = document.getElementById(id);
+                if (element) {
+                    if (state.tasks[id].completed) {
+                        element.classList.add("checked");
+                    } else {
+                        element.classList.remove("checked");
+                    }
+                }
+            });
         }
 
         // ==========================================
-        // 4. NAVIGATION MANAGEMENT (No Shift Bugs)
+        // 5. NAVIGATION SWITCHES (No Shifts Layout)
         // ==========================================
         function switchTab(tabId) {
             state.activeTab = tabId;
@@ -914,15 +1041,14 @@
             const activePage = document.getElementById(`page-${tabId}`);
             if(activePage) activePage.classList.add("active");
 
-            logSystem(`VIEW SWITCHED TO: ${tabId.toUpperCase()}`);
             forceIosKeyboardReset();
         }
 
         // ==========================================
-        // 5. TRAINING PLAN SELECTION (Isolated Trigger Fix)
+        // 6. ISOLATED SELECTION CHECKBOX LOGIC 
         // ==========================================
         function toggleTaskById(wrapperId, xpValue) {
-            // BUG FIX: If user hits the "?" text block button, exit immediately to stop cross-firing a checkmark
+            // SHIELDS OUT ACCIDENTALLY TRIGGERED CLICKS FROM INFORMATION DESCRIPTIONS OR EXPANSIONS
             if (window.event && (window.event.target.classList.contains('info-trigger-btn') || window.event.target.closest('.inspection-panel'))) {
                 return;
             }
@@ -934,28 +1060,23 @@
                 state.tasks[wrapperId].completed = false;
                 wrapper.classList.remove("checked");
                 adjustXPEngine(-xpValue);
-                logSystem(`UNCHECKED: ${state.tasks[wrapperId].blueprint} task.`);
             } else {
                 state.tasks[wrapperId].completed = true;
                 wrapper.classList.add("checked");
                 adjustXPEngine(xpValue);
-                logSystem(`COMPLETED: ${state.tasks[wrapperId].blueprint} task.`);
             }
             saveStateToStorage();
         }
 
         function selectAllTasks() {
-            let interactionLogged = false;
             Object.keys(state.tasks).forEach(id => {
                 if (!state.tasks[id].completed) {
                     const wrapper = document.getElementById(id);
                     if (wrapper) wrapper.classList.add("checked");
                     state.tasks[id].completed = true;
                     adjustXPEngine(state.tasks[id].xp);
-                    interactionLogged = true;
                 }
             });
-            if(interactionLogged) logSystem("ALL TRAINING GOALS CHECKED.");
             saveStateToStorage();
         }
 
@@ -970,26 +1091,11 @@
             }
         }
 
-        function deployMatrix() {
-            const deployBtn = document.getElementById("deployBtn");
-            deployBtn.classList.add("success");
-            deployBtn.innerText = "WORKOUT SESSION RECORDED";
-            logSystem("FIGHT DATA UPDATED SECURELY ON INTERNAL DRIVE.");
-            
-            setTimeout(() => {
-                deployBtn.classList.remove("success");
-                deployBtn.innerText = "Submit Finished Training";
-            }, 3000);
-        }
-
         // ==========================================
-        // 6. XP ENGINE & PROGRESSION SYSTEM
+        // 7. AUTOMATED REWARDS LEVEL UP ENGINE
         // ==========================================
         function adjustXPEngine(amount) {
-            if(state.isExamGateActive && amount > 0) {
-                logSystem("XP BLOCKED: Must complete the division skill test to continue scaling.");
-                return;
-            }
+            if(state.isExamGateActive && amount > 0) return;
 
             state.xp += amount;
 
@@ -998,7 +1104,7 @@
                     state.xp -= state.xpNeeded;
                     state.level++;
                     state.pointsBank += 3;
-                    logSystem(`👑 LEVEL UP! You reached Fighter Level ${state.level}. +3 Upgrade Points.`);
+                    triggerFullCelebrationSplash();
                 }
             } else if (state.xp < 0) {
                 state.xp = 0;
@@ -1008,6 +1114,15 @@
             updateExperienceProgressBars();
             updateAttributeChassisBars();
             saveStateToStorage();
+        }
+
+        function triggerFullCelebrationSplash() {
+            document.getElementById("levelUpSplash").classList.add("active");
+        }
+
+        function dismissLevelUpSplash() {
+            document.getElementById("levelUpSplash").classList.remove("active");
+            renderInterface();
         }
 
         function updateExperienceProgressBars() {
@@ -1030,11 +1145,9 @@
             ];
             const rankIndex = Math.min(state.careerRank - 1, rankTitles.length - 1);
             
-            // Set dynamic title text
             const titleElement = document.getElementById("rankDisplay");
             titleElement.innerText = rankTitles[rankIndex];
 
-            // Handle dynamic emblem color adjustments based on tier level
             const emblemElement = document.getElementById("gloveEmblem");
             if (state.careerRank <= 3) {
                 titleElement.style.color = "var(--accent-blue)";
@@ -1052,7 +1165,6 @@
             if ((state.level === 5 || state.level === 10) && state.xp >= 90) {
                 state.isExamGateActive = true;
                 document.getElementById("gatekeeperPanel").classList.add("active");
-                logSystem("⚠️ ALERT: Next division test is required to unlock further XP gains.");
             } else {
                 state.isExamGateActive = false;
                 document.getElementById("gatekeeperPanel").classList.remove("active");
@@ -1066,24 +1178,20 @@
                 state.xp = 0;
                 state.isExamGateActive = false;
                 document.getElementById("gatekeeperPanel").classList.remove("active");
-                logSystem(`🔥 TEST PASSED. Moved up to Rank Standing: ${state.careerRank}.`);
                 renderInterface();
                 saveStateToStorage();
             }
         }
 
         // ==========================================
-        // 7. FIGHTER STAT ENGINE
+        // 8. FIGHTER ATTRIBUTE STAT SYSTEM
         // ==========================================
         function upgradeStat(statKey) {
             if (state.pointsBank > 0 && state.stats[statKey] < state.maxStatVal) {
                 state.stats[statKey]++;
                 state.pointsBank--;
-                logSystem(`STAT INCREASED: ${statKey.toUpperCase()} is now ${state.stats[statKey]}`);
                 updateAttributeChassisBars();
                 saveStateToStorage();
-            } else if (state.pointsBank <= 0) {
-                logSystem("REJECTED: No unallocated upgrade points available.");
             }
         }
 
@@ -1095,7 +1203,6 @@
             });
 
             state.pointsBank += pointsToRefund;
-            logSystem(`STATS RESET: Refunded ${pointsToRefund} points back to your bank.`);
             updateAttributeChassisBars();
             saveStateToStorage();
         }
@@ -1135,40 +1242,65 @@
         }
 
         // ==========================================
-        // 8. BOXING TIMER
+        // 9. CONTINUOUS AUTO-ADVANCING BOXING TIMER
         // ==========================================
         function toggleTimer() {
             const btn = document.getElementById("timerStartBtn");
+            const statusLabel = document.getElementById("timerStatus");
             
             if (state.timer.isRunning) {
                 clearInterval(state.timer.instance);
                 state.timer.isRunning = false;
                 btn.innerText = "Resume Round";
                 btn.classList.remove("active-run");
-                document.getElementById("timerStatus").innerText = "BOXING TIMER PAUSED";
+                statusLabel.innerText = `${state.timer.mode} PAUSED`;
             } else {
                 state.timer.isRunning = true;
                 btn.innerText = "Pause Round";
                 btn.classList.add("active-run");
-                document.getElementById("timerStatus").innerText = "ROUND LIVE - WORK HARD";
+                statusLabel.innerText = state.timer.mode === 'WORK' ? "ROUND LIVE - WORK HARD" : "RESTING - ACTIVE RECOVERY";
                 
                 state.timer.instance = setInterval(() => {
                     state.timer.timeLeft--;
                     renderTimerLayoutDisplay();
 
                     if (state.timer.timeLeft <= 0) {
-                        clearInterval(state.timer.instance);
-                        state.timer.isRunning = false;
-                        executeTimerAlarmFlashFeedback();
+                        cycleTimerNextMode();
                     }
                 }, 1000);
             }
         }
 
+        function cycleTimerNextMode() {
+            const timerDisplay = document.getElementById("timerTime");
+            const statusLabel = document.getElementById("timerStatus");
+
+            if (state.timer.mode === 'WORK') {
+                // MOVE AUTOMATICALLY INTO RECOVERY BREAK
+                state.timer.mode = 'REST';
+                state.timer.timeLeft = state.timer.restDuration;
+                statusLabel.innerText = "RESTING - ACTIVE RECOVERY";
+                timerDisplay.classList.add("visual-flash");
+                
+                // Advance career training streak metric safely 
+                state.streak++;
+                document.getElementById("streakDisplay").innerText = state.streak;
+                saveStateToStorage();
+            } else {
+                // BREAK IS OVER, TRIGGER NEXT FIGHT WORKING SEGMENT
+                state.timer.mode = 'WORK';
+                state.timer.timeLeft = state.timer.workDuration;
+                statusLabel.innerText = "ROUND LIVE - WORK HARD";
+                timerDisplay.classList.remove("visual-flash");
+            }
+            renderTimerLayoutDisplay();
+        }
+
         function resetTimer() {
             clearInterval(state.timer.instance);
             state.timer.isRunning = false;
-            state.timer.timeLeft = state.timer.duration;
+            state.timer.mode = 'WORK';
+            state.timer.timeLeft = state.timer.workDuration;
             
             const btn = document.getElementById("timerStartBtn");
             btn.innerText = "Start Round";
@@ -1188,70 +1320,31 @@
                 `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
         }
 
-        function executeTimerAlarmFlashFeedback() {
-            const timerDisplay = document.getElementById("timerTime");
-            timerDisplay.classList.add("visual-flash");
-            document.getElementById("timerStatus").innerText = "ROUND DONE. BREAK TIME.";
-            logSystem("🔔 TIMER FINISHED: Round completed successfully.");
-            
-            state.streak++;
-            document.getElementById("streakDisplay").innerText = state.streak;
-            saveStateToStorage();
-        }
-
         // ==========================================
-        // 9. LOGS & UTILITY SYSTEM
+        // 10. PREMIUM WEIGHT MANAGEMENT GRID SYSTEM
         // ==========================================
-        function logSystem(message) {
-            const logBox = document.getElementById("systemLog");
-            if (!logBox) return;
-            const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-            logBox.innerHTML = `> [${timestamp}] ${message}<br>` + logBox.innerHTML;
-        }
-
-        function generateDailyModifiers() {
-            const modifiers = [
-                "⚡ FOCUS DAY: Extra round speed attributes tracking with high multiplier value.",
-                "🪐 ENDURANCE BLOCK: Pacing focus target loaded.",
-                "🛡️ COUNTER DAY: Slip setups and block timing are high priority."
-            ];
-            document.getElementById("mutationBanner").innerText = modifiers[Math.floor(Math.random() * modifiers.length)];
-        }
-
-        function changeUsername() {
-            const currentName = state.username;
-            const targetName = prompt("CHANGE CALLSIGN NAME:", currentName);
-            if(targetName && targetName.trim() !== "") {
-                state.username = targetName.trim().toUpperCase();
-                document.getElementById("userDisplay").innerText = state.username;
-                logSystem(`FIGHTER NAME ASSIGNED: ${state.username}`);
+        function submitWeightEntry() {
+            const input = document.getElementById("weightInputField");
+            if(input && input.value.trim() !== "") {
+                const parsedValue = parseFloat(input.value);
+                if (!isNaN(parsedValue) && parsedValue > 0) {
+                    state.currentWeightDisplay = parsedValue;
+                    input.placeholder = state.currentWeightDisplay.toFixed(1);
+                }
+                input.value = "";
+                forceIosKeyboardReset();
                 saveStateToStorage();
             }
         }
 
-        function applyNightModeBasedOnTime() {
-            const currentHour = new Date().getHours();
-            if (currentHour >= 20 || currentHour < 6) {
-                document.body.classList.add("night-mode");
-            }
-        }
-
-        // iOS Keyboard Layout Shift Bug Shield
-        function forceIosKeyboardReset() {
-            window.scrollTo({top: 0, left: 0, behavior: 'instant'});
-        }
-
-        function submitWeightEntry() {
-            const input = document.getElementById("weightInputField");
-            if(input && input.value.trim() !== "") {
-                logSystem(`WEIGHT TRACK TRACKED: ${input.value} LBS.`);
-                input.value = "";
-                forceIosKeyboardReset();
-            }
+        function quickAdjustWeight(deltaAmount) {
+            state.currentWeightDisplay += deltaAmount;
+            document.getElementById("weightInputField").placeholder = state.currentWeightDisplay.toFixed(1);
+            saveStateToStorage();
         }
 
         // ==========================================
-        // 10. SYLLABUS DATA STATE GENERATOR (Rank Guide)
+        // 11. EXTRA UTILITIES & PROGRESS GUIDES
         // ==========================================
         function rebuildSyllabusTiers() {
             const container = document.getElementById("syllabusContainer");
@@ -1280,8 +1373,39 @@
             });
         }
 
+        function generateDailyModifiers() {
+            const modifiers = [
+                "⚡ FOCUS DAY: Extra round speed attributes tracking with high multiplier value.",
+                "🪐 ENDURANCE BLOCK: Pacing focus target loaded.",
+                "🛡️ COUNTER DAY: Slip setups and block timing are high priority."
+            ];
+            document.getElementById("mutationBanner").innerText = modifiers[Math.floor(Math.random() * modifiers.length)];
+        }
+
+        function changeUsername() {
+            const currentName = state.username;
+            const targetName = prompt("CHANGE CALLSIGN NAME:", currentName);
+            if(targetName && targetName.trim() !== "") {
+                state.username = targetName.trim().toUpperCase();
+                document.getElementById("userDisplay").innerText = state.username;
+                saveStateToStorage();
+            }
+        }
+
+        function applyNightModeBasedOnTime() {
+            const currentHour = new Date().getHours();
+            if (currentHour >= 20 || currentHour < 6) {
+                document.body.classList.add("night-mode");
+            }
+        }
+
+        // iOS Keyboard Shield Defense Mechanism
+        function forceIosKeyboardReset() {
+            window.scrollTo({top: 0, left: 0, behavior: 'instant'});
+        }
+
         // ==========================================
-        // 11. PERSISTENCE ENGINE
+        // 12. PERSISTENCE ENGINE LOCAL DATA STORAGE
         // ==========================================
         function saveStateToStorage() {
             const structuralPackage = {
@@ -1291,13 +1415,16 @@
                 careerRank: state.careerRank,
                 streak: state.streak,
                 pointsBank: state.pointsBank,
-                stats: state.stats
+                stats: state.stats,
+                headerCollapsed: state.headerCollapsed,
+                currentWeightDisplay: state.currentWeightDisplay,
+                tasks: state.tasks
             };
-            localStorage.setItem("combatCore_v5_save", JSON.stringify(structuralPackage));
+            localStorage.setItem("combatCore_v6_save", JSON.stringify(structuralPackage));
         }
 
         function loadStateFromStorage() {
-            const packageString = localStorage.getItem("combatCore_v5_save");
+            const packageString = localStorage.getItem("combatCore_v6_save");
             if (!packageString) return;
             try {
                 const externalPackage = JSON.parse(packageString);
@@ -1309,9 +1436,18 @@
                     state.streak = externalPackage.streak || state.streak;
                     state.pointsBank = externalPackage.pointsBank || state.pointsBank;
                     state.stats = externalPackage.stats || state.stats;
+                    state.headerCollapsed = externalPackage.headerCollapsed || false;
+                    state.currentWeightDisplay = externalPackage.currentWeightDisplay || state.currentWeightDisplay;
+                    state.tasks = externalPackage.tasks || state.tasks;
+
+                    // Sync the visual collapsed state if it was stored
+                    if (state.headerCollapsed) {
+                        document.getElementById("headerCollapsible").classList.add("collapsed");
+                        document.getElementById("collapseBtn").innerText = "▼";
+                    }
                 }
             } catch (e) {
-                logSystem("DATABASE LOG: Fresh profile initiated.");
+                // Silent fail protection safe backup execution
             }
         }
     </script>
