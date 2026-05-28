@@ -7,7 +7,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Combat Core">
     
-    <title>COMBAT CORE v5.0 MASTER</title>
+    <title>COMBAT CORE v5.3 EMBLEM EDITION</title>
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Squada+One&display=swap" rel="stylesheet">
     
     <style>
@@ -18,6 +18,7 @@
             --text-color: #e2e8f0;
             --accent-blue: #87ceeb; /* Pure Baby Blue Tech */
             --accent-purple: #a855f7;
+            --accent-gold: #fbbf24;
             --accent-green: #4ade80;
             --accent-red: #f87171;
             --accent-dim: #64748b;
@@ -54,6 +55,7 @@
             --text-color: #718096;
             --accent-blue: #4a5568;
             --accent-purple: #2d3748;
+            --accent-gold: #718096;
             --accent-green: #1a202c;
             --accent-red: #742a2a;
         }
@@ -86,13 +88,25 @@
         }
 
         /* College Font Style Applied to Rank Status Plates */
+        .rank-title-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 3px;
+        }
+
         .rank-title {
             font-family: 'Squada One', sans-serif;
-            color: var(--accent-blue);
             font-size: 1.9rem;
             letter-spacing: 1.5px;
-            margin-bottom: 3px;
             text-transform: uppercase;
+        }
+
+        .rank-glove-emblem {
+            font-size: 1.6rem;
+            display: inline-block;
+            transition: color 0.3s ease;
         }
 
         .level-display {
@@ -162,7 +176,7 @@
             letter-spacing: 0.5px;
         }
 
-        /* 4-Column Navigation Layout to accommodate Profile Hub */
+        /* Navigation Layout - Clean Modern Fight Gym Labels */
         .nav-tabs {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -259,6 +273,7 @@
             border-radius: 50%;
             font-size: 0.8rem;
             font-weight: bold;
+            z-index: 5; /* Keep separation click clean */
         }
 
         .matrix-text-block { display: flex; flex-direction: column; }
@@ -302,7 +317,7 @@
             padding-bottom: 2px;
         }
 
-        /* Visual Silent Boxing Timer Interface */
+        /* Boxing Timer Interface */
         .timer-container {
             background: rgba(0, 0, 0, 0.4);
             border: 1px solid var(--border-color);
@@ -445,7 +460,7 @@
             text-transform: uppercase;
         }
 
-        /* Profile Visual Chart Components */
+        /* Profile Tracking */
         .weight-input-row {
             display: flex;
             gap: 10px;
@@ -469,88 +484,8 @@
             text-transform: uppercase;
             cursor: pointer;
         }
-        .trajectory-stream {
-            display: flex;
-            gap: 6px;
-            overflow-x: auto;
-            padding: 4px 0;
-            margin-bottom: 15px;
-        }
-        .trajectory-node {
-            background: rgba(0,0,0,0.3);
-            border: 1px solid var(--border-color);
-            padding: 6px 10px;
-            font-size: 0.75rem;
-            white-space: nowrap;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 2px;
-        }
-        .delta-tag { font-weight: bold; font-size: 0.7rem; }
-        .delta-tag.down { color: var(--accent-green); }
-        .delta-tag.up { color: var(--accent-red); }
-        .delta-tag.flat { color: var(--accent-dim); }
 
-        /* Kinetic Slider Component layout */
-        .kinetic-slider-container {
-            background: #000;
-            border: 1px solid var(--border-color);
-            padding: 12px;
-            margin-bottom: 15px;
-        }
-        .kinetic-label-row {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.75rem;
-            color: var(--accent-dim);
-            margin-bottom: 6px;
-            text-transform: uppercase;
-        }
-        .kinetic-track {
-            width: 100%;
-            height: 8px;
-            background: var(--border-color);
-            position: relative;
-            border-radius: 4px;
-        }
-        .kinetic-pin {
-            width: 16px;
-            height: 16px;
-            background: var(--accent-blue);
-            border-radius: 50%;
-            position: absolute;
-            top: -4px;
-            left: 50%;
-            transform: translateX(-50%);
-            transition: left 0.4s cubic-bezier(0.1, 0.8, 0.3, 1);
-            box-shadow: 0 0 8px var(--accent-blue);
-        }
-
-        /* Tale of the Tape Progress Block Matrix */
-        .pentagon-bar-row {
-            margin-bottom: 8px;
-        }
-        .pentagon-label {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.75rem;
-            color: var(--accent-dim);
-            margin-bottom: 2px;
-        }
-        .pentagon-track {
-            height: 8px;
-            background: #000;
-            border: 1px solid var(--border-color);
-        }
-        .pentagon-fill {
-            height: 100%;
-            background: var(--accent-blue);
-            width: 0%;
-            transition: width 0.5s ease;
-        }
-
-        /* Syllabus Division Card Custom Typography Styling */
+        /* Gym Rank Guide Section Layouts */
         .syllabus-tier {
             border: 1px solid var(--border-color);
             padding: 12px;
@@ -575,29 +510,6 @@
         .syllabus-tier.current .tier-status { color: var(--accent-blue); }
         .tier-reqs { font-size: 0.8rem; color: var(--accent-dim); padding-left: 10px; line-height: 1.4; border-left: 1px solid rgba(255,255,255,0.05); }
 
-        .achievements-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 8px;
-            margin-top: 10px;
-        }
-        .badge-card {
-            background: rgba(0,0,0,0.2);
-            border: 1px solid var(--border-color);
-            padding: 10px;
-            text-align: center;
-            opacity: 0.35;
-            transition: all 0.3s ease;
-        }
-        .badge-card.unlocked {
-            opacity: 1;
-            border-color: var(--accent-purple);
-            background: rgba(168, 85, 247, 0.03);
-        }
-        .badge-icon { font-size: 1.3rem; margin-bottom: 4px; }
-        .badge-title { font-size: 0.85rem; font-weight: bold; color: #fff; }
-        .badge-desc { font-size: 0.7rem; color: var(--accent-dim); margin-top: 2px; }
-
         .system-log-box {
             background: #050608;
             border: 1px solid var(--border-color);
@@ -608,47 +520,6 @@
             overflow-y: auto;
             margin-top: 15px;
         }
-
-        .maintenance-panel {
-            margin-top: 35px;
-            border-top: 1px solid var(--border-color);
-            padding-top: 20px;
-            text-align: center;
-        }
-
-        .danger-zone-wrapper {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-            background: rgba(248, 113, 113, 0.02);
-            border: 1px dashed rgba(248, 113, 113, 0.15);
-            padding: 15px;
-            margin-top: 10px;
-        }
-
-        .danger-input {
-            background: #000;
-            border: 1px solid var(--border-color);
-            color: var(--accent-red);
-            padding: 8px;
-            text-align: center;
-            font-size: 0.85rem;
-            width: 100%;
-            max-width: 220px;
-            text-transform: uppercase;
-        }
-
-        .reset-btn {
-            background: transparent;
-            color: rgba(248, 113, 113, 0.4);
-            border: 1px solid rgba(248, 113, 113, 0.2);
-            padding: 10px 16px;
-            font-size: 0.8rem;
-            width: 100%;
-            max-width: 220px;
-        }
-        .reset-btn:disabled { opacity: 0.2; cursor: not-allowed; border-color: var(--border-color); }
 
         .gatekeeper-screen {
             display: none;
@@ -664,7 +535,13 @@
 
     <header>
         <div><span class="username-display" id="userDisplay" onclick="changeUsername()">FIGHTER_01</span></div>
-        <div class="rank-title" id="rankDisplay">RECRUIT DIVISION</div>
+        
+        <!-- Dynamic Emblem Container Row -->
+        <div class="rank-title-container">
+            <span class="rank-glove-emblem" id="gloveEmblem">🥊</span>
+            <span class="rank-title" id="rankDisplay">RECRUIT DIVISION</span>
+        </div>
+
         <div class="level-display">FIGHTER LEVEL: <span id="levelDisplay" style="color:var(--accent-blue)">1</span></div>
         
         <div class="progress-label"><span>DAILY XP BREAKDOWN</span><span id="xpLabelText" style="color:var(--accent-blue)">0/100</span></div>
@@ -673,7 +550,7 @@
             <div class="bar-text" id="xpText">0%</div>
         </div>
 
-        <div class="progress-label"><span>CAREER RANK PROGRESS</span><span id="rankLabelText" style="color:var(--accent-purple)">1 / 9 RANKS</span></div>
+        <div class="progress-label"><span>CAREER DIVISION PROGRESS</span><span id="rankLabelText" style="color:var(--accent-purple)">1 / 9 RANKS</span></div>
         <div class="bar-container">
             <div class="rank-bar" id="rankBar"></div>
             <div class="bar-text" id="rankText">11%</div>
@@ -684,15 +561,16 @@
 
     <div class="mutation-banner" id="mutationBanner">LOADING DAILY FOCUS TARGET MODIFIERS...</div>
 
+    <!-- Modern Gym Navigation Labels -->
     <div class="nav-tabs">
-        <button class="tab-btn active" id="tab-dashboard" onclick="switchTab('dashboard')">Matrix</button>
-        <button class="tab-btn" id="tab-chassis" onclick="switchTab('chassis')">Chassis</button>
-        <button class="tab-btn" id="tab-profile" onclick="switchTab('profile')">Profile</button>
-        <button class="tab-btn" id="tab-syllabus" onclick="switchTab('syllabus')">Syllabus</button>
+        <button class="tab-btn active" id="tab-tasks" onclick="switchTab('tasks')">Daily Tasks</button>
+        <button class="tab-btn" id="tab-stats" onclick="switchTab('stats')">Fighter Stats</button>
+        <button class="tab-btn" id="tab-weight" onclick="switchTab('weight')">Weight Log</button>
+        <button class="tab-btn" id="tab-guide" onclick="switchTab('guide')">Rank Guide</button>
     </div>
 
-    <!-- PAGE: DASHBOARD -->
-    <div id="page-dashboard" class="app-page active">
+    <!-- PAGE: DAILY TASKS (Formerly Matrix) -->
+    <div id="page-tasks" class="app-page active">
         
         <div class="timer-container">
             <div class="timer-status-label" id="timerStatus">BOXING TIMER IDLE</div>
@@ -705,96 +583,97 @@
 
         <div class="panel">
             <div class="panel-title-row">
-                <span class="panel-title">Daily Combat Matrix</span>
+                <span class="panel-title">Active Training Plan</span>
                 <button class="utility-action-btn" onclick="selectAllTasks()">[ Select All ]</button>
             </div>
             
+            <!-- DYNAMIC TASK 1 -->
             <div class="matrix-wrapper" id="wrapper-task1">
                 <div class="matrix-item" onclick="toggleTaskById('wrapper-task1', 30)">
                     <div class="matrix-info">
                         <div class="info-trigger-btn" onclick="toggleInspection('inspect-task1')">?</div>
                         <div class="matrix-text-block">
-                            <span class="matrix-name">> Shadowboxing Routine</span>
-                            <span class="matrix-reward" id="reward-task1">+30 XP | +Speed & Tactics AXP</span>
+                            <span class="matrix-name" id="name-task1">> Loading Plan...</span>
+                            <span class="matrix-reward" id="reward-task1">+30 XP</span>
                         </div>
                     </div>
                     <div class="checkbox-custom">[✓]</div>
                 </div>
                 <div class="inspection-panel" id="inspect-task1">
-                    <div class="inspection-title" id="inspect-title-task1">[RECRUIT DIVISION] Shadowboxing Blueprint</div>
-                    <div id="inspect-body-task1">Loading active structural matrix protocols...</div>
+                    <div class="inspection-title" id="inspect-title-task1">Setup</div>
+                    <div id="inspect-body-task1">Loading details...</div>
                 </div>
             </div>
 
+            <!-- DYNAMIC TASK 2 -->
             <div class="matrix-wrapper" id="wrapper-task2">
                 <div class="matrix-item" onclick="toggleTaskById('wrapper-task2', 40)">
                     <div class="matrix-info">
                         <div class="info-trigger-btn" onclick="toggleInspection('inspect-task2')">?</div>
                         <div class="matrix-text-block">
-                            <span class="matrix-name">> Heavy Bag / Pads Conditioning</span>
-                            <span class="matrix-reward" id="reward-task2">+40 XP | +Strength & Stamina AXP</span>
+                            <span class="matrix-name" id="name-task2">> Loading Plan...</span>
+                            <span class="matrix-reward" id="reward-task2">+40 XP</span>
                         </div>
                     </div>
                     <div class="checkbox-custom">[✓]</div>
                 </div>
                 <div class="inspection-panel" id="inspect-task2">
-                    <div class="inspection-title">Impact Matrix Protocol</div>
-                    • <b>Objective:</b> Drive raw physical conditioning into skeletal structures and bone density.<br>
-                    • <b>Execution:</b> 3-5 rounds of target impact. Focus completely on driving punch mechanics directly <i>through</i> the target layer without losing balance stance lines. Keep opposite guard hands sealed tight to block counter loops.
+                    <div class="inspection-title" id="inspect-title-task2">Setup</div>
+                    <div id="inspect-body-task2">Loading details...</div>
                 </div>
             </div>
 
+            <!-- DYNAMIC TASK 3 -->
             <div class="matrix-wrapper" id="wrapper-task3">
                 <div class="matrix-item" onclick="toggleTaskById('wrapper-task3', 30)">
                     <div class="matrix-info">
                         <div class="info-trigger-btn" onclick="toggleInspection('inspect-task3')">?</div>
                         <div class="matrix-text-block">
-                            <span class="matrix-name">> Roadwork / Sparring Footwork</span>
-                            <span class="matrix-reward" id="reward-task3">+30 XP | +Stamina & Speed AXP</span>
+                            <span class="matrix-name" id="name-task3">> Loading Plan...</span>
+                            <span class="matrix-reward" id="reward-task3">+30 XP</span>
                         </div>
                     </div>
                     <div class="checkbox-custom">[✓]</div>
                 </div>
                 <div class="inspection-panel" id="inspect-task3">
-                    <div class="inspection-title">Cardio & Mobility Matrix</div>
-                    • <b>Objective:</b> Maximize operational VO2 stamina output windows and ankle speed mechanics.<br>
-                    • <b>Execution:</b> Execute a dedicated 2-3 mile road session, or finish 15 complete minutes of uninterrupted rapid mobility work (agility stepping patterns, fast-cutting angular footwork, or jump rope speed changes).
+                    <div class="inspection-title" id="inspect-title-task3">Setup</div>
+                    <div id="inspect-body-task3">Loading details...</div>
                 </div>
             </div>
 
-            <button class="deploy-btn" id="deployBtn" onclick="deployMatrix()">Deploy Training Matrix</button>
+            <button class="deploy-btn" id="deployBtn" onclick="deployMatrix()">Submit Finished Training</button>
         </div>
 
         <div class="gatekeeper-screen" id="gatekeeperPanel">
-            <h2 style="color:var(--accent-red); margin-bottom: 10px;">⚠️ GATEKEEPER EXAM DETECTED</h2>
-            <p style="font-size:0.9rem; margin-bottom: 15px; color:var(--accent-dim);">You have capped your experience limit. You must pass your division's structural boxing test to advance your career.</p>
-            <button class="deploy-btn" style="border-color:var(--accent-green); color:var(--accent-green);" onclick="passGatekeeper()">BREACH EXAM PORTAL</button>
+            <h2 style="color:var(--accent-red); margin-bottom: 10px;">⚠️ SKILL TEST DETECTED</h2>
+            <p style="font-size:0.9rem; margin-bottom: 15px; color:var(--accent-dim);">You have reached your experience limit. You must perform and pass your division's physical test with a trainer to move forward.</p>
+            <button class="deploy-btn" style="border-color:var(--accent-green); color:var(--accent-green);" onclick="passGatekeeper()">LOG TEST AS PASSED</button>
         </div>
 
         <div class="panel" style="margin-top: 15px;">
             <div class="panel-title-row" style="border:none; margin:0;">
-                <span class="panel-title">System Log</span>
+                <span class="panel-title">System Activity Log</span>
             </div>
-            <div class="system-log-box" id="systemLog">> SYSTEM ONLINE...</div>
+            <div class="system-log-box" id="systemLog">> SECURE APP CONSOLE ONLINE...</div>
         </div>
     </div>
 
-    <!-- PAGE: CHASSIS -->
-    <div id="page-chassis" class="app-page">
+    <!-- PAGE: FIGHTER STATS (Formerly Chassis) -->
+    <div id="page-stats" class="app-page">
         <div class="panel">
             <div class="panel-title-row" style="border:none; margin-bottom:5px;">
                 <span class="panel-title">Fighter Attributes</span>
             </div>
             
-            <div class="style-archetype-tag" id="styleArchetypeDisplay">STYLE: MASTER TECHNICIAN</div>
+            <div class="style-archetype-tag" id="styleArchetypeDisplay">STYLE: BALANCE HYBRID</div>
             
-            <div class="points-bank">UNALLOCATED MASTER POINTS: <span id="pointsDisplay">0</span></div>
+            <div class="points-bank">AVAILABLE ATTRIBUTE POINTS: <span id="pointsDisplay">0</span></div>
             
             <div class="stat-row">
                 <div class="stat-flex-header">
                     <div class="stat-name-block">
                         <span class="stat-name">STRENGTH</span>
-                        <span class="stat-desc">Impact force, punch mechanics, torque output.</span>
+                        <span class="stat-desc">Impact force, punch mechanics, body rotation power.</span>
                     </div>
                     <div class="stat-meta-controls">
                         <span class="stat-val" id="val-str">10</span>
@@ -810,7 +689,7 @@
                 <div class="stat-flex-header">
                     <div class="stat-name-block">
                         <span class="stat-name">SPEED</span>
-                        <span class="stat-desc">Hand velocity, punch snap, contraction speed.</span>
+                        <span class="stat-desc">Hand velocity, punch snap, fast muscle contractions.</span>
                     </div>
                     <div class="stat-meta-controls">
                         <span class="stat-val" id="val-spd">10</span>
@@ -826,7 +705,7 @@
                 <div class="stat-flex-header">
                     <div class="stat-name-block">
                         <span class="stat-name">STAMINA</span>
-                        <span class="stat-desc">Aerobic durability, multi-round pacing threshold.</span>
+                        <span class="stat-desc">Cardio health, multi-round pacing threshold.</span>
                     </div>
                     <div class="stat-meta-controls">
                         <span class="stat-val" id="val-sta">10</span>
@@ -842,7 +721,7 @@
                 <div class="stat-flex-header">
                     <div class="stat-name-block">
                         <span class="stat-name">TACTICS</span>
-                        <span class="stat-desc">Feints, counter timing, guard adjustment latency.</span>
+                        <span class="stat-desc">Fakes, counter-punch timing, defense reflexes.</span>
                     </div>
                     <div class="stat-meta-controls">
                         <span class="stat-val" id="val-tac">10</span>
@@ -855,13 +734,13 @@
             </div>
 
             <div class="refund-container">
-                <button class="refund-btn" onclick="reallocatePoints()">[ ↺ Reallocate All Attribute Points ]</button>
+                <button class="refund-btn" onclick="reallocatePoints()">[ ↺ Reset & Reallocate Points ]</button>
             </div>
         </div>
     </div>
 
-    <!-- PAGE: PROFILE -->
-    <div id="page-profile" class="app-page">
+    <!-- PAGE: WEIGHT LOG -->
+    <div id="page-weight" class="app-page">
         <div class="panel">
             <div class="panel-title-row">
                 <span class="panel-title">Weight Tracking Deck</span>
@@ -873,13 +752,13 @@
         </div>
     </div>
 
-    <!-- PAGE: SYLLABUS -->
-    <div id="page-syllabus" class="app-page">
-        <div class="panel">
+    <!-- PAGE: RANK GUIDE (Formerly Syllabus) -->
+    <div id="page-guide" class="app-page">
+        <div class="panel" id="syllabusContainer">
             <div class="panel-title-row">
-                <span class="panel-title">Syllabus Overview</span>
+                <span class="panel-title">Gym Progression Steps</span>
             </div>
-            <p style="font-size: 0.9rem; color: var(--accent-dim);">Syllabus requirements and division levels unlock sequentially as ranks scale.</p>
+            <!-- Dynamic Content Hook -->
         </div>
     </div>
 
@@ -899,43 +778,76 @@
             maxRanks: 9,
             streak: 0,
             pointsBank: 0,
-            activeTab: 'dashboard',
+            activeTab: 'tasks',
             isExamGateActive: false,
             
-            // Attributes Core
-            stats: {
-                str: 10,
-                spd: 10,
-                sta: 10,
-                tac: 10
-            },
+            stats: { str: 10, spd: 10, sta: 10, tac: 10 },
             baseStats: { str: 10, spd: 10, sta: 10, tac: 10 },
             maxStatVal: 100,
 
-            // Boxing Timer Configuration
-            timer: {
-                duration: 180, // 3 Minutes
-                timeLeft: 180,
-                instance: null,
-                isRunning: false
-            },
+            timer: { duration: 180, timeLeft: 180, instance: null, isRunning: false },
 
-            // Task Configuration Map
             tasks: {
                 'wrapper-task1': { completed: false, xp: 30, blueprint: 'Shadowboxing' },
                 'wrapper-task2': { completed: false, xp: 40, blueprint: 'Heavy Bag' },
-                'wrapper-task3': { completed: false, xp: 30, blueprint: 'Roadwork' }
+                'wrapper-task3': { completed: false, xp: 30, blueprint: 'Footwork' }
             },
 
-            // Blueprint Modifiers
-            blueprints: {
-                1: {
-                    title: "[RECRUIT DIVISION] Shadowboxing Blueprint",
-                    body: "• <b>Objective:</b> Perfect form velocity baseline execution.<br>• <b>Execution:</b> 3 rounds shadowboxing. Focus on strict linear stance defense, clean 1-2 snapping combinations, and pivot escapes."
+            // RE-ENGINEERED COMPLETELY CLEAN JARGON-FREE DESCRIPTIONS
+            rankMissions: {
+                // Tier 1 - Rank 1 to 3
+                beginner: {
+                    task1: {
+                        name: "> [Rank 1-3 Basics] Shadowbox: Simple 1-2 Drilling",
+                        title: "[RECRUIT] Shadowboxing Form Foundation",
+                        body: "• <b>Objective:</b> Practice throwing straight punches safely.<br>• <b>Execution:</b> 3 rounds of shadowboxing. Only throw your left straight punch (Jab) followed by your right straight punch (Cross). Every single time you punch with one hand, glue the other hand directly to your cheekbone to protect your face."
+                    },
+                    task2: {
+                        name: "> [Rank 1-3 Basics] Bagwork: Heavy Bag Balance",
+                        title: "[RECRUIT] Punch Impact Basics",
+                        body: "• <b>Objective:</b> Hit hard without losing your balance.<br>• <b>Execution:</b> 3 rounds on the heavy bag. Don't worry about throwing long, fast combinations. Throw hard, single punches. Make sure both of your feet are glued flat to the floor the exact second your punch hits the bag."
+                    },
+                    task3: {
+                        name: "> [Rank 1-3 Basics] Footwork: Guard Up & Don't Trip",
+                        title: "[RECRUIT] Basic Foot Movement",
+                        body: "• <b>Objective:</b> Keep your balance so you don't get knocked over easily.<br>• <b>Execution:</b> 15 minutes. Move around. Step forward, backward, left, and right. <b>The Golden Rule:</b> Never let your feet touch or cross each other. Keep a wide, solid gap between your steps so you are always ready to move."
+                    }
                 },
-                2: {
-                    title: "[CONTENDER DIVISION] Advanced Structural Blueprint",
-                    body: "• <b>Objective:</b> Breaking linear predictive motion paths.<br>• <b>Execution:</b> 4 rounds shadowboxing. Integrate level-changes, tactical check-hooks, and high-guard frame pressure."
+                // Tier 2 - Rank 4 to 6
+                intermediate: {
+                    task1: {
+                        name: "> [Rank 4-6 Medium] Shadowbox: Head & Body Shifts",
+                        title: "[CONTENDER] Changing Target Levels",
+                        body: "• <b>Objective:</b> Learn to strike the head and body in sequence.<br>• <b>Execution:</b> 3 rounds. Throw a head jab to blind the opponent, bend your knees to lower your weight, and throw a straight power cross directly into their stomach."
+                    },
+                    task2: {
+                        name: "> [Rank 4-6 Medium] Bagwork: Change the Rhythm",
+                        title: "[CONTENDER] Setting Up Heavy Hits",
+                        body: "• <b>Objective:</b> Mix light punch setups with hard finishers.<br>• <b>Execution:</b> 4 rounds. Tap the heavy bag lightly with double jabs to measure your range, then step in hard to explode with a heavy hook or cross."
+                    },
+                    task3: {
+                        name: "> [Rank 4-6 Medium] Footwork: Step to the Angle",
+                        title: "[CONTENDER] Stepping Off Center",
+                        body: "• <b>Objective:</b> Step off to the side to avoid pressure coming right at you.<br>• <b>Execution:</b> 15 minutes. Throw a punch combination, immediately step your front foot wide to the side, and spin your back foot 90 degrees to face a completely new angle."
+                    }
+                },
+                // Tier 3 - Rank 7 to 9
+                advanced: {
+                    task1: {
+                        name: "> [Rank 7-9 Elite] Shadowbox: Fake and Counter",
+                        title: "[MASTER] Baiting & Timing Interceptions",
+                        body: "• <b>Objective:</b> Trick your opponent into throwing a punch so you can hit them back.<br>• <b>Execution:</b> 4 rounds. Throw a half-fake jab to pull their guard away, quickly slip your upper body out of the way, and throw a counter uppercut."
+                    },
+                    task2: {
+                        name: "> [Rank 7-9 Elite] Bagwork: Close-Range Pressure",
+                        title: "[MASTER] Fighting Inside the Pocket",
+                        body: "• <b>Objective:</b> Fight right next to the target while staying protected.<br>• <b>Execution:</b> 4-5 rounds. Keep your forehead close to the bag, tuck both elbows tight into your ribs, and loop short, heavy hooks into the body."
+                    },
+                    task3: {
+                        name: "> [Rank 7-9 Elite] Footwork: Spring In and Out",
+                        title: "[MASTER] Elastic Range Shifts",
+                        body: "• <b>Objective:</b> Bounce smoothly in and out of hitting range like a spring.<br>• <b>Execution:</b> 20 minutes of bouncing steps. Spring forward into range to land a punch combo, and instantly bounce backward clear out of danger before the bag can touch you."
+                    }
                 }
             }
         };
@@ -947,12 +859,11 @@
             loadStateFromStorage();
             applyNightModeBasedOnTime();
             renderInterface();
-            logSystem("SYSTEM READY. INTEGRATED OPERATIONAL PROTOCOLS LIVE.");
+            logSystem("GYM OPERATIONS SECURE. SECTIONS UPDATED TO MODERN LABELS.");
             generateDailyModifiers();
         });
 
         function renderInterface() {
-            // Top Deck Displays
             document.getElementById("userDisplay").innerText = state.username;
             document.getElementById("levelDisplay").innerText = state.level;
             document.getElementById("streakDisplay").innerText = state.streak;
@@ -961,33 +872,60 @@
             updateExperienceProgressBars();
             updateAttributeChassisBars();
             evaluateGatekeeperCalculations();
+            buildDynamicMissionsByRank(); 
+            rebuildSyllabusTiers();        
         }
 
         // ==========================================
-        // 3. NAVIGATION MANAGEMENT
+        // 3. DYNAMIC MISSION INJECTOR MOTOR
+        // ==========================================
+        function buildDynamicMissionsByRank() {
+            let activeSet = state.rankMissions.beginner; 
+            
+            if (state.careerRank >= 4 && state.careerRank <= 6) {
+                activeSet = state.rankMissions.intermediate;
+            } else if (state.careerRank >= 7) {
+                activeSet = state.rankMissions.advanced;
+            }
+
+            document.getElementById("name-task1").innerText = activeSet.task1.name;
+            document.getElementById("inspect-title-task1").innerText = activeSet.task1.title;
+            document.getElementById("inspect-body-task1").innerHTML = activeSet.task1.body;
+
+            document.getElementById("name-task2").innerText = activeSet.task2.name;
+            document.getElementById("inspect-title-task2").innerText = activeSet.task2.title;
+            document.getElementById("inspect-body-task2").innerHTML = activeSet.task2.body;
+
+            document.getElementById("name-task3").innerText = activeSet.task3.name;
+            document.getElementById("inspect-title-task3").innerText = activeSet.task3.title;
+            document.getElementById("inspect-body-task3").innerHTML = activeSet.task3.body;
+        }
+
+        // ==========================================
+        // 4. NAVIGATION MANAGEMENT (No Shift Bugs)
         // ==========================================
         function switchTab(tabId) {
             state.activeTab = tabId;
-            
-            // Update DOM Nav Active Classes
             document.querySelectorAll(".tab-btn").forEach(btn => btn.classList.remove("active"));
             const activeBtn = document.getElementById(`tab-${tabId}`);
             if(activeBtn) activeBtn.classList.add("active");
 
-            // Swap Viewable Node Cards
             document.querySelectorAll(".app-page").forEach(page => page.classList.remove("active"));
             const activePage = document.getElementById(`page-${tabId}`);
             if(activePage) activePage.classList.add("active");
 
-            logSystem(`NAVIGATION MATRIX MUTATED TO: ${tabId.toUpperCase()}`);
+            logSystem(`VIEW SWITCHED TO: ${tabId.toUpperCase()}`);
+            forceIosKeyboardReset();
         }
 
         // ==========================================
-        // 4. COMBAT MATRIX TASK PROTOCOLS
+        // 5. TRAINING PLAN SELECTION (Isolated Trigger Fix)
         // ==========================================
         function toggleTaskById(wrapperId, xpValue) {
-            // Fixed Collision Bleed: Safely exit if clicking inspect trigger button
-            if (window.event && window.event.target.classList.contains('info-trigger-btn')) return;
+            // BUG FIX: If user hits the "?" text block button, exit immediately to stop cross-firing a checkmark
+            if (window.event && (window.event.target.classList.contains('info-trigger-btn') || window.event.target.closest('.inspection-panel'))) {
+                return;
+            }
 
             const wrapper = document.getElementById(wrapperId);
             if (!wrapper) return;
@@ -996,12 +934,12 @@
                 state.tasks[wrapperId].completed = false;
                 wrapper.classList.remove("checked");
                 adjustXPEngine(-xpValue);
-                logSystem(`REMOVED: ${state.tasks[wrapperId].blueprint} Matrix Protocol.`);
+                logSystem(`UNCHECKED: ${state.tasks[wrapperId].blueprint} task.`);
             } else {
                 state.tasks[wrapperId].completed = true;
                 wrapper.classList.add("checked");
                 adjustXPEngine(xpValue);
-                logSystem(`EXECUTED: ${state.tasks[wrapperId].blueprint} Matrix Protocol.`);
+                logSystem(`COMPLETED: ${state.tasks[wrapperId].blueprint} task.`);
             }
             saveStateToStorage();
         }
@@ -1017,12 +955,11 @@
                     interactionLogged = true;
                 }
             });
-            if(interactionLogged) logSystem("ALL MATRIX TARGETS CAPTURED.");
+            if(interactionLogged) logSystem("ALL TRAINING GOALS CHECKED.");
             saveStateToStorage();
         }
 
         function toggleInspection(inspectId) {
-            // Complete Intercept Shield added to protect Checklist rows
             if (window.event) {
                 window.event.stopPropagation();
                 window.event.preventDefault();
@@ -1036,33 +973,32 @@
         function deployMatrix() {
             const deployBtn = document.getElementById("deployBtn");
             deployBtn.classList.add("success");
-            deployBtn.innerText = "TRAINING ENCRYPTED & SUBMITTED";
-            logSystem("MATRIX LOCKED. CAREER METRICS CALCULATED AND SAVED.");
+            deployBtn.innerText = "WORKOUT SESSION RECORDED";
+            logSystem("FIGHT DATA UPDATED SECURELY ON INTERNAL DRIVE.");
             
             setTimeout(() => {
                 deployBtn.classList.remove("success");
-                deployBtn.innerText = "Deploy Training Matrix";
+                deployBtn.innerText = "Submit Finished Training";
             }, 3000);
         }
 
         // ==========================================
-        // 5. XP ENGINE & PROGRESSION SYSTEM
+        // 6. XP ENGINE & PROGRESSION SYSTEM
         // ==========================================
         function adjustXPEngine(amount) {
             if(state.isExamGateActive && amount > 0) {
-                logSystem("WARNING: ATTAINED XP DROPPED. PASS GATEKEEPER EXAM TO PROGRESS.");
+                logSystem("XP BLOCKED: Must complete the division skill test to continue scaling.");
                 return;
             }
 
             state.xp += amount;
 
-            // Process Level Up Thresholds
             if (state.xp >= state.xpNeeded) {
                 while (state.xp >= state.xpNeeded) {
                     state.xp -= state.xpNeeded;
                     state.level++;
-                    state.pointsBank += 3; // Grant Attribute tokens
-                    logSystem(`👑 LEVEL UP DETECTED. CHASSIS LEVEL ${state.level} ATTAINED. +3 SKILL POINTS.`);
+                    state.pointsBank += 3;
+                    logSystem(`👑 LEVEL UP! You reached Fighter Level ${state.level}. +3 Upgrade Points.`);
                 }
             } else if (state.xp < 0) {
                 state.xp = 0;
@@ -1089,24 +1025,34 @@
         function updateRankDisplayStrings() {
             const rankTitles = [
                 "RECRUIT DIVISION", "NOVICE STRIKER", "AMATEUR CONTENDER", 
-                "REGIONAL CHASSIS", "APEX AGGRESSOR", "CHAMPIONSHIP CORE", 
-                "ELITE TECHNICIAN", "MASTER STRIKER", "GRAND COMBAT CORE"
+                "REGIONAL FIGHTER", "APEX AGGRESSOR", "CHAMPIONSHIP LINE", 
+                "ELITE TECHNICIAN", "MASTER STRIKER", "GRAND FIGHT LEGEND"
             ];
             const rankIndex = Math.min(state.careerRank - 1, rankTitles.length - 1);
-            document.getElementById("rankDisplay").innerText = rankTitles[rankIndex];
             
-            const activeBlueprint = state.careerRank >= 4 ? state.blueprints[2] : state.blueprints[1];
-            const titleNode = document.getElementById("inspect-title-task1");
-            const bodyNode = document.getElementById("inspect-body-task1");
-            if(titleNode) titleNode.innerText = activeBlueprint.title;
-            if(bodyNode) bodyNode.innerHTML = activeBlueprint.body;
+            // Set dynamic title text
+            const titleElement = document.getElementById("rankDisplay");
+            titleElement.innerText = rankTitles[rankIndex];
+
+            // Handle dynamic emblem color adjustments based on tier level
+            const emblemElement = document.getElementById("gloveEmblem");
+            if (state.careerRank <= 3) {
+                titleElement.style.color = "var(--accent-blue)";
+                emblemElement.style.color = "var(--accent-blue)";
+            } else if (state.careerRank >= 4 && state.careerRank <= 6) {
+                titleElement.style.color = "var(--accent-purple)";
+                emblemElement.style.color = "var(--accent-purple)";
+            } else {
+                titleElement.style.color = "var(--accent-gold)";
+                emblemElement.style.color = "var(--accent-gold)";
+            }
         }
 
         function evaluateGatekeeperCalculations() {
             if ((state.level === 5 || state.level === 10) && state.xp >= 90) {
                 state.isExamGateActive = true;
                 document.getElementById("gatekeeperPanel").classList.add("active");
-                logSystem("⚠️ ALERT: STRUCTURAL CAREER GATEKEEPER ONLINE. PROGRESSION BRICKED.");
+                logSystem("⚠️ ALERT: Next division test is required to unlock further XP gains.");
             } else {
                 state.isExamGateActive = false;
                 document.getElementById("gatekeeperPanel").classList.remove("active");
@@ -1120,25 +1066,24 @@
                 state.xp = 0;
                 state.isExamGateActive = false;
                 document.getElementById("gatekeeperPanel").classList.remove("active");
-                logSystem(`🔥 EXAM BREACHED. ADVANCED TO ${state.careerRank} RANK STANDING.`);
-                updateRankDisplayStrings();
+                logSystem(`🔥 TEST PASSED. Moved up to Rank Standing: ${state.careerRank}.`);
                 renderInterface();
                 saveStateToStorage();
             }
         }
 
         // ==========================================
-        // 6. CHASSIS ATTRIBUTE TRACKING MOTOR
+        // 7. FIGHTER STAT ENGINE
         // ==========================================
         function upgradeStat(statKey) {
             if (state.pointsBank > 0 && state.stats[statKey] < state.maxStatVal) {
                 state.stats[statKey]++;
                 state.pointsBank--;
-                logSystem(`UPGRADED CHASSIS ${statKey.toUpperCase()} TO: ${state.stats[statKey]}`);
+                logSystem(`STAT INCREASED: ${statKey.toUpperCase()} is now ${state.stats[statKey]}`);
                 updateAttributeChassisBars();
                 saveStateToStorage();
             } else if (state.pointsBank <= 0) {
-                logSystem("REJECTED: INSUFFICIENT UNALLOCATED POINT POOL MARGINS.");
+                logSystem("REJECTED: No unallocated upgrade points available.");
             }
         }
 
@@ -1150,7 +1095,7 @@
             });
 
             state.pointsBank += pointsToRefund;
-            logSystem(`CHASSIS RE-CORE FLUSHED: REFUNDED ${pointsToRefund} DATA POINTS.`);
+            logSystem(`STATS RESET: Refunded ${pointsToRefund} points back to your bank.`);
             updateAttributeChassisBars();
             saveStateToStorage();
         }
@@ -1180,17 +1125,17 @@
             const { str, spd, sta, tac } = state.stats;
             let archetype = "BALANCE HYBRID";
 
-            if(str > spd && str > sta && str > tac) archetype = "SLUGGER PRESSURE MACHINE";
-            else if(spd > str && spd > sta && spd > tac) archetype = "SPEED DEMON OUT-BOXER";
-            else if(sta > str && sta > spd && sta > tac) archetype = "IRON CHASSIS PRESSURE DOG";
-            else if(tac > str && tac > spd && tac > sta) archetype = "MASTER TECHNICIAN INTERCEPTOR";
+            if(str > spd && str > sta && str > tac) archetype = "POWER SLUGGER";
+            else if(spd > str && spd > sta && spd > tac) archetype = "SPEED OUT-BOXER";
+            else if(sta > str && spd > sta && str > tac) archetype = "PRESSURE GRINDER";
+            else if(tac > str && tac > spd && tac > sta) archetype = "TECHNICAL INTERCEPTOR";
 
             const archDisplay = document.getElementById("styleArchetypeDisplay");
-            if(archDisplay) archDisplay.innerText = `STYLE: ${archetype}`;
+            if(archDisplay) archDisplay.innerText = `STYLE TYPE: ${archetype}`;
         }
 
         // ==========================================
-        // 7. VISUAL SILENT BOXING TIMER
+        // 8. BOXING TIMER
         // ==========================================
         function toggleTimer() {
             const btn = document.getElementById("timerStartBtn");
@@ -1205,7 +1150,7 @@
                 state.timer.isRunning = true;
                 btn.innerText = "Pause Round";
                 btn.classList.add("active-run");
-                document.getElementById("timerStatus").innerText = "ROUND LIVE - ENFORCE INTENSITY";
+                document.getElementById("timerStatus").innerText = "ROUND LIVE - WORK HARD";
                 
                 state.timer.instance = setInterval(() => {
                     state.timer.timeLeft--;
@@ -1246,8 +1191,8 @@
         function executeTimerAlarmFlashFeedback() {
             const timerDisplay = document.getElementById("timerTime");
             timerDisplay.classList.add("visual-flash");
-            document.getElementById("timerStatus").innerText = "ROUND COMPLETED. BREAK STANDBY.";
-            logSystem("🔔 VISUAL ALARM ALERT: COMBAT BOUNDARY CAP OVER. WORK PATTERN END.");
+            document.getElementById("timerStatus").innerText = "ROUND DONE. BREAK TIME.";
+            logSystem("🔔 TIMER FINISHED: Round completed successfully.");
             
             state.streak++;
             document.getElementById("streakDisplay").innerText = state.streak;
@@ -1255,33 +1200,31 @@
         }
 
         // ==========================================
-        // 8. LOGS & UTILITY SYSTEM ENGINE
+        // 9. LOGS & UTILITY SYSTEM
         // ==========================================
         function logSystem(message) {
             const logBox = document.getElementById("systemLog");
             if (!logBox) return;
-            
             const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
             logBox.innerHTML = `> [${timestamp}] ${message}<br>` + logBox.innerHTML;
         }
 
         function generateDailyModifiers() {
             const modifiers = [
-                "⚡ DAILY MODIFIER ACTIVE: SPEED ATTRIBUTES EARN +15% BONUS MULTIPLIERS TONIGHT.",
-                "🪐 METABOLIC SHIFT ACTIVE: CORE STAMINA DRAIN INTENSIFIED. KEEP GUARDS FRAME HIGH.",
-                "🛡️ TACTICAL SIMULATION LOADED: BOXING DEFENSE METRICS ACCRUE DOUBLE CHASSIS INTEGRATION VALUE."
+                "⚡ FOCUS DAY: Extra round speed attributes tracking with high multiplier value.",
+                "🪐 ENDURANCE BLOCK: Pacing focus target loaded.",
+                "🛡️ COUNTER DAY: Slip setups and block timing are high priority."
             ];
-            const randomSelection = modifiers[Math.floor(Math.random() * modifiers.length)];
-            document.getElementById("mutationBanner").innerText = randomSelection;
+            document.getElementById("mutationBanner").innerText = modifiers[Math.floor(Math.random() * modifiers.length)];
         }
 
         function changeUsername() {
             const currentName = state.username;
-            const targetName = prompt("COMMUNICATION DECK: RE-WRITE OPERATOR USERNAME CALLSIGN:", currentName);
+            const targetName = prompt("CHANGE CALLSIGN NAME:", currentName);
             if(targetName && targetName.trim() !== "") {
                 state.username = targetName.trim().toUpperCase();
                 document.getElementById("userDisplay").innerText = state.username;
-                logSystem(`CALLSIGN COMPILER EXECUTED: TARGET MODIFIED TO ${state.username}`);
+                logSystem(`FIGHTER NAME ASSIGNED: ${state.username}`);
                 saveStateToStorage();
             }
         }
@@ -1290,25 +1233,55 @@
             const currentHour = new Date().getHours();
             if (currentHour >= 20 || currentHour < 6) {
                 document.body.classList.add("night-mode");
-                logSystem("LOW GLARE MONOCHROMATIC NIGHT OVERRIDE SHIELD INSTANTIATED.");
             }
         }
 
+        // iOS Keyboard Layout Shift Bug Shield
         function forceIosKeyboardReset() {
-            window.scrollTo(0, 0);
-            logSystem("VIEWPORT FOCUS POSITION STABILIZED.");
+            window.scrollTo({top: 0, left: 0, behavior: 'instant'});
         }
 
         function submitWeightEntry() {
             const input = document.getElementById("weightInputField");
             if(input && input.value.trim() !== "") {
-                logSystem(`WEIGHT LOGGED SECURELY: ${input.value} LBS.`);
+                logSystem(`WEIGHT TRACK TRACKED: ${input.value} LBS.`);
                 input.value = "";
+                forceIosKeyboardReset();
             }
         }
 
         // ==========================================
-        // 9. LOCALSTORAGE DATA PERSISTENCE
+        // 10. SYLLABUS DATA STATE GENERATOR (Rank Guide)
+        // ==========================================
+        function rebuildSyllabusTiers() {
+            const container = document.getElementById("syllabusContainer");
+            if (!container) return;
+
+            container.innerHTML = '<div class="panel-title-row"><span class="panel-title">Gym Progression Steps</span></div>';
+
+            const levels = [
+                { id: 1, name: "STAGE I: RECRUIT PLATFORM", activeRange: "Ranks 1 - 3", cond: state.careerRank <= 3, desc: "Master basic punch geometry (straight lines), stable stances, and avoiding crossed steps while moving." },
+                { id: 2, name: "STAGE II: CONTENDER CIRCUITS", activeRange: "Ranks 4 - 6", cond: (state.careerRank >= 4 && state.careerRank <= 6), desc: "Learn head-to-body target shifting, 90-degree lateral angle pivot steps, and variable rhythm punch speeds." },
+                { id: 3, name: "STAGE III: CHAMPIONSHIP CORE", activeRange: "Ranks 7 - 9", cond: state.careerRank >= 7, desc: "Advanced fake/bait loops, working inside close phone-booth distances safely, and elastic spring foot movements." }
+            ];
+
+            levels.forEach(lvl => {
+                const div = document.createElement("div");
+                div.className = `syllabus-tier ${lvl.cond ? 'current' : ''}`;
+                div.innerHTML = `
+                    <div class="tier-header">
+                        <span>${lvl.name}</span>
+                        <span class="tier-status">${lvl.cond ? '[YOUR ACTIVE GOAL]' : '[STANDBY]'}</span>
+                    </div>
+                    <p style="font-size:0.8rem; color:var(--accent-blue); margin-bottom:4px;">${lvl.activeRange}</p>
+                    <div class="tier-reqs">${lvl.desc}</div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // ==========================================
+        // 11. PERSISTENCE ENGINE
         // ==========================================
         function saveStateToStorage() {
             const structuralPackage = {
@@ -1338,7 +1311,7 @@
                     state.stats = externalPackage.stats || state.stats;
                 }
             } catch (e) {
-                logSystem("CRITICAL DATABASE CORRUPTION DETECTED. RESTORING COMPILER CACHE.");
+                logSystem("DATABASE LOG: Fresh profile initiated.");
             }
         }
     </script>
