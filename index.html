@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>System Dashboard: Final Edition</title>
+    <link href="https://fonts.googleapis.com/css2?family=Graduate&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #030305;
+            --card-bg: #07080c;
+            --text-light: #ffffff;
+            --text-dim: #3a3d4a;
+            --gold: #ffaa00;
+            --boss-red: #ff2a2a;
+            --theme-color: #00d2ff;
+            --theme-glow: rgba(0, 210, 255, 0.2);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; }
+        body { background-color: var(--bg-color); color: var(--text-light); display: flex; justify-content: center; align-items: center; min-height: 100vh; overflow: hidden; }
+        
+        #app-container { width: 100%; max-width: 430px; height: 100vh; background-color: var(--bg-color); position: relative; display: flex; flex-direction: column; padding: 25px; justify-content: space-between; border: 1px solid #101117; transition: border 0.4s ease; }
+        
+        .screen { display: none; flex-direction: column; height: 100%; justify-content: space-between; animation: systemBoot 0.3s cubic-bezier(0.1, 0.8, 0.2, 1); }
+        .screen.active { display: flex; }
+        @keyframes systemBoot { from { opacity: 0; transform: translateY(4px) scale(0.99); } to { opacity: 1; transform: translateY(0) scale(1); } }
+
+        .emblem-bracket { display: flex; justify-content: center; align-items: center; margin: 5px 0; min-height: 100px; position: relative; }
+        .glove-vector { width: 90px; height: 90px; color: var(--theme-color); filter: drop-shadow(0px 0px 20px var(--theme-glow)); transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+
+        .hunter-card { background: var(--card-bg); padding: 16px; border-radius: 14px; border: 1px solid #13151f; box-shadow: 0 4px 20px rgba(0,0,0,0.5); }
+        .division-title { font-family: 'Graduate', serif; font-size: 24px; text-align: center; letter-spacing: 1.5px; text-transform: uppercase; text-shadow: 0 0 10px var(--theme-glow); }
+        
+        .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 15px; }
+        .stat-node { background: #0b0c12; padding: 12px 8px; border-radius: 10px; text-align: center; border: 1px solid #141722; position: relative; }
+        .stat-integer { font-size: 22px; font-weight: 900; color: #fff; margin-top: 2px; }
+        .stat-upgrade-trigger { background: var(--theme-color); color: #000; border: none; width: 22px; height: 22px; border-radius: 50%; font-size: 16px; font-weight: 900; position: absolute; top: -6px; right: -6px; display: none; justify-content: center; align-items: center; cursor: pointer; box-shadow: 0 0 10px var(--theme-color); }
+
+        .campaign-module { background: #05060a; border: 1px solid #13151f; border-radius: 14px; padding: 22px; margin: 12px 0; flex-grow: 1; display: flex; flex-direction: column; justify-content: center; position: relative; }
+        .campaign-module.boss-alert { border-color: var(--boss-red) !important; box-shadow: inset 0 0 20px rgba(255,51,51,0.15), 0 0 15px rgba(255,51,51,0.1); }
+        
+        .bracket-tag { font-size: 10px; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; text-align: center; padding: 5px 12px; border-radius: 6px; margin: 0 auto 14px auto; width: max-content; }
+        .tag-foundation { background: rgba(0, 210, 255, 0.08); color: #00d2ff; border: 1px solid rgba(0, 210, 255, 0.15); }
+        .tag-nuance { background: rgba(255, 170, 0, 0.08); color: var(--gold); border: 1px solid rgba(255, 170, 0, 0.15); }
+        .tag-boss-event { background: rgba(255, 51, 51, 0.12); color: var(--boss-red); border: 1px solid rgba(255, 51, 51, 0.3); animation: pulseFlash 0.8s infinite alternate; }
+        @keyframes pulseFlash { from { opacity: 0.7; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
+        
+        .objective-text { font-size: 20px; font-weight: 900; text-align: center; color: #fff; line-height: 1.4; margin-bottom: 6px; }
+        .objective-brief { font-size: 13.5px; color: #525768; text-align: center; line-height: 1.45; margin-bottom: 12px; padding: 0 5px; }
+
+        .progression-wrapper { margin-bottom: 10px; }
+        .track-bg { background: #0b0c12; height: 8px; border-radius: 4px; overflow: hidden; margin-top: 6px; border: 1px solid #141722; }
+        .track-fill { background: linear-gradient(90deg, var(--theme-color), #0055ff); width: 0%; height: 100%; transition: width 0.4s ease; box-shadow: 0 0 8px var(--theme-color); }
+
+        .btn { background: linear-gradient(180deg, var(--theme-color) 0%, #0077bb 100%); color: #000; border: none; padding: 16px; border-radius: 12px; font-size: 15px; font-weight: 900; text-transform: uppercase; cursor: pointer; letter-spacing: 1px; box-shadow: 0 4px 15px var(--theme-glow); }
+        .btn:active { transform: scale(0.97); }
+        .btn-success { background: linear-gradient(180deg, #4BB543 0%, #256129 100%) !important; color: #fff; }
+        .btn-gatekeeper { background: linear-gradient(180deg, var(--boss-red) 0%, #800000 100%) !important; color: #fff; }
+        .btn-points { background: linear-gradient(180deg, var(--gold) 0%, #996600 100%) !important; color: #000; }
+        
+        .utility-row { display: grid; grid-template-columns: 1fr 45px; gap: 10px; margin-top: 10px; }
+        .btn-secondary { background: #0b0c12; color: #525768; border: 1px solid #141722; font-size: 13px; font-weight: 700; text-transform: uppercase; border-radius: 10px; cursor: pointer; display: flex; justify-content: center; align-items: center; }
+        
+        #validation-ring { display: none; font-size: 14px; font-weight: 900; color: var(--theme-color); letter-spacing: 1px; text-transform: uppercase; text-align: center; margin: 15px 0; }
+    </style>
+</head>
+<body>
+
+<div id="app-container">
+
+    <div id="screen-home" class="screen active">
+        <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 5px;">
+                <span id="account-lvl" style="font-weight:900; color: var(--theme-color); font-size: 11px; border: 1px solid var(--theme-color); padding: 4px 10px; border-radius: 6px;">ACCOUNT LVL 1</span>
+                <span id="degrade-warning" style="color: var(--boss-red); font-size: 11px; font-weight:900; display:none;">⚠️ SKILLS RUSTED (-20 XP)</span>
+                <span id="points-alert" style="color: var(--gold); font-size: 11px; font-weight:900; display:none;">✦ STATS PENDING</span>
+            </div>
+            
+            <div class="emblem-bracket">
+                <svg id="division-glove" class="glove-vector" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19 10C19 6.13401 15.866 3 12 3C8.13401 3 5 6.13401 5 10V13C5 13.5523 5.44772 14 6 14H18C18.5523 14 19 13.5523 19 13V10Z" fill="currentColor"/>
+                    <path d="M5 15H19V17C19 18.1046 18.1046 19 17 19H7C5.89543 19 5 18.1046 5 17V15Z" fill="currentColor" opacity="0.8"/>
+                    <path d="M7 19H17V21H7V19Z" fill="currentColor" opacity="0.6"/>
+                </svg>
+            </div>
+            
+            <div id="division-rank-display" class="division-title">White Glove Division</div>
+        </div>
+
+        <div class="hunter-card">
+            <div style="font-size: 10px; font-weight: 800; color: #464a59; text-transform: uppercase; letter-spacing: 1px; display:flex; justify-content:space-between;">
+                <span>Fighter Parameters</span>
+                <span id="streak-node" style="color:var(--gold);">🔥 0 DAY COMBAT STREAK</span>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-node">
+                    <button class="stat-upgrade-trigger" onclick="triggerSystemAudio(); allocateAttribute('agi')">+</button>
+                    <div style="font-size:9px; color:#464a59; font-weight:700;">AGILITY</div>
+                    <div id="display-agi" class="stat-integer">10</div>
+                </div>
+                <div class="stat-node">
+                    <button class="stat-upgrade-trigger" onclick="triggerSystemAudio(); allocateAttribute('str')">+</button>
+                    <div style="font-size:9px; color:#464a59; font-weight:700;">STRENGTH</div>
+                    <div id="display-str" class="stat-integer">10</div>
+                </div>
+                <div class="stat-node">
+                    <button class="stat-upgrade-trigger" onclick="triggerSystemAudio(); allocateAttribute('vit')">+</button>
+                    <div style="font-size:9px; color:#464a59; font-weight:700;">STAMINA</div>
+                    <div id="display-vit" class="stat-integer">10</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="main-board" class="campaign-module">
+            <div id="bracket-tag" class="bracket-tag tag-foundation">Core Foundation</div>
+            <div id="display-objective" class="objective-text">Syncing System...</div>
+            <div id="display-brief" class="objective-brief">Loading current combat parameters.</div>
+            <div id="board-index-footer" style="font-size:10px; color:#464a59; text-align:center; font-weight:700; text-transform:uppercase;">Stage 1 / 4</div>
+        </div>
+
+        <div class="progression-wrapper">
+            <div style="display:flex; justify-content:space-between; font-size:11px; color:#464a59; font-weight:700;">
+                <span>ACCOUNT SYSTEM XP</span>
+                <span id="xp-integer-display">0 / 200 XP</span>
+            </div>
+            <div class="track-bg"><div id="track-bar-fill" class="track-fill"></div></div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 2px;">
+            <button id="action-trigger" class="btn" onclick="triggerSystemAudio(); openPortalGate()">⚔️ Deploy Training Matrix</button>
+            <div class="utility-row">
+                <button id="rest-timer-btn" class="btn-secondary" onclick="toggleRestTimer()">🥤 Take 60s Break</button>
+                <button id="audio-toggle-btn" class="btn-secondary" onclick="toggleAudioMute()">🔊</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="screen-gate" class="screen">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:10px;">
+            <div id="portal-header" style="font-weight:900; color:var(--theme-color); letter-spacing:1px; font-size:13px;">PORTAL BREACHED</div>
+            <div style="font-size:11px; color:#464a59; font-weight:700;">OFFLOADED WORKOUT</div>
+        </div>
+
+        <div style="background:#05060a; border:1px solid #13151f; padding:45px 20px; border-radius:14px; text-align:center; margin:auto 0; box-shadow: 0 10px 30px rgba(0,0,0,0.6);">
+            <div id="portal-tag" class="bracket-tag tag-foundation">Core Foundation</div>
+            <div id="portal-objective" style="font-size:23px; font-weight:900; margin-top:15px; color:#fff; line-height:1.4;">Stance Integration</div>
+            <div id="portal-brief" style="font-size:14px; color:#525768; margin-top:10px; line-height:1.5;">Perform target volume rep load perfectly. Face away from mobile frame now.</div>
+            <div id="validation-ring">⏳ SYSTEM ANALYSING FORM: 4s...</div>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:12px;">
+            <button id="btn-gate-complete" class="btn btn-success" onclick="initiateValidationDelay()">✨ Verify Complete Reps</button>
+            <button id="btn-gate-failed" class="btn" style="background: linear-gradient(180deg, #d32f2f 0%, #991b1b 100%); color:#fff; display:none;" onclick="triggerSystemAudio(); closePortalGate(false)">💀 Failed / Form Collapse</button>
+            <button id="flee-btn" class="btn" style="background:#0b0c12; color:#464a59; font-size:13px; padding:12px; box-shadow:none; border:1px solid #13151f;" onclick="triggerSystemAudio(); cancelPortalRun()">Flee Instance</button>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    let player = {
+        lvl: 1, xp: 0, divisionIdx: 0, currentStage: 0,
+        agi: 10, str: 10, vit: 10, bankPoints: 0,
+        isBossSpawned: false, combatStreak: 0, lastActiveTimestamp: null,
+        isMuted: false
+    };
+
+    let restInterval = null;
+    let restTimeLeft = 60;
+
+    const DIVISIONS = [
+        { name: "White Glove Division", color: "#ffffff", glow: "rgba(255,255,255,0.15)" },
+        { name: "Green Glove Division", color: "#2eff70", glow: "rgba(46,255,112,0.2)" },
+        { name: "Yellow Glove Division", color: "#ffea00", glow: "rgba(255,234,0,0.2)" },
+        { name: "Orange Glove Division", color: "#ff6600", glow: "rgba(255,102,0,0.2)" },
+        { name: "Red Glove Division", color: "#ff2a2a", glow: "rgba(255,42,42,0.25)" },
+        { name: "Blue Glove Division", color: "#00d2ff", glow: "rgba(0,210,255,0.25)" },
+        { name: "Purple Glove Division", color: "#b300ff", glow: "rgba(179,0,255,0.25)" },
+        { name: "Brown Glove Division", color: "#cd853f", glow: "rgba(205,133,63,0.15)" },
+        { name: "Black Glove Division", color: "#222430", glow: "rgba(255,255,255,0.05)" }
+    ];
+
+    const DIV_XP_WALLS = [200, 500, 1000, 2500, 4000, 6000, 8000, 10000, 15000];
+    const DIV_STAT_DROP = [3, 4, 6, 10, 12, 15, 18, 20, 25];
+
+    const SYLLABUS = {
+        0: [
+            { name: "The Stance Alignment", brief: "Find a traditional boxing stance on YouTube. Keep high guard, knees unlocked, weight evenly distributed for 2 continuous minutes.", mode: "core", targetStat: "vit" },
+            { name: "Linear Advancement Steps", brief: "Execute 50 perfect forward steps. Push off your back leg and drag your lead hand foot smoothly. Keep your core low.", mode: "core", targetStat: "agi" },
+            { name: "Linear Retreat Steps", brief: "Execute 50 technical step-backs. Maintain strict stance width, do not cross ankles or let heels touch.", mode: "core", targetStat: "agi" },
+            { name: "The Exhale Discipline", brief: "PRO NUANCE: Run continuous forward and backward steps for 2 minutes. Force a sharp, audible exhale on every step to connect core structure to movement.", mode: "pro", targetStat: "vit" }
+        ],
+        1: [
+            { name: "The Snapping Lead Jab", brief: "Execute 100 isolated jabs in a mirror. Extends straight from chin, knuckles flip flat horizontally, snaps straight back home.", mode: "core", targetStat: "agi" },
+            { name: "The Seated Rear Cross", brief: "Execute 100 isolated cross power punches. Pivot your rear foot, rotating your hip forward to shoot energy directly through.", mode: "core", targetStat: "str" },
+            { name: "The Blinding Double Jab", brief: "PRO NUANCE: Execute 50 lightning double jabs. Throwing two punches from the same hand to block vision and clear high guards.", mode: "pro", targetStat: "agi" },
+            { name: "Exhale on Collision Matrix", brief: "PRO NUANCE: Shadowbox straight shots for 3 minutes. Force an explicit exhale *at the exact microsecond* of full extension to lock core tension to impacts.", mode: "pro", targetStat: "str" }
+        ]
+    };
+
+    const EXAMS = [
+        "CHALLENGE: WHITE DIVISION ADVANCEMENT TEST. Complete 3 continuous minutes of active shadowboxing footwork mixing all directions without dropping guard or breaking stance shape.",
+        "CHALLENGE: GREEN DIVISION ADVANCEMENT TEST. Complete 3 continuous minutes of crisp alternating single straight shots, forcing structural foot pivots on every hit."
+    ];
+
+    if(localStorage.getItem('arise_final_v2026')) {
+        player = JSON.parse(localStorage.getItem('arise_final_v2026'));
+    }
+
+    function triggerSystemAudio(type = 'click') {
+        if (player.isMuted) return;
+        try {
+            let ctx = new (window.AudioContext || window.webkitAudioContext)();
+            let osc = ctx.createOscillator();
+            let gain = ctx.createGain();
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+
+            if (type === 'click') {
+                osc.frequency.setValueAtTime(400, ctx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(1200, ctx.currentTime + 0.04);
+                gain.gain.setValueAtTime(0.04, ctx.currentTime);
+                gain.gain.linearRampToValueAtTime(0, ctx.currentTime + 0.04);
+                osc.start(); osc.stop(ctx.currentTime + 0.04);
+            } else if (type === 'levelup') {
+                osc.type = 'triangle';
+                osc.frequency.setValueAtTime(300, ctx.currentTime);
+                osc.frequency.setValueAtTime(450, ctx.currentTime + 0.08);
+                osc.frequency.setValueAtTime(600, ctx.currentTime + 0.16);
+                osc.frequency.exponentialRampToValueAtTime(1200, ctx.currentTime + 0.35);
+                gain.gain.setValueAtTime(0.08, ctx.currentTime);
+                gain.gain.linearRampToValueAtTime(0, ctx.currentTime + 0.4);
+                osc.start(); osc.stop(ctx.currentTime + 0.4);
+            } else if (type === 'warning') {
+                osc.type = 'sawtooth';
+                osc.frequency.setValueAtTime(180, ctx.currentTime);
+                osc.frequency.linearRampToValueAtTime(100, ctx.currentTime + 0.25);
+                gain.gain.setValueAtTime(0.06, ctx.currentTime);
+                gain.gain.linearRampToValueAtTime(0, ctx.currentTime + 0.25);
+                osc.start(); osc.stop(ctx.currentTime + 0.25);
+            }
+        } catch(e) {}
+    }
+
+    function toggleAudioMute() {
+        player.isMuted = !player.isMuted;
+        document.getElementById('audio-toggle-btn').innerText = player.isMuted ? "🔇" : "🔊";
+        if (!player.isMuted) triggerSystemAudio();
+        localStorage.setItem('arise_final_v2026', JSON.stringify(player));
+    }
+
+    function toggleRestTimer() {
+        triggerSystemAudio();
+        const btn = document.getElementById('rest-timer-btn');
+        
+        if (restInterval) {
+            clearInterval(restInterval);
+            restInterval = null;
+            btn.innerText = "🥤 Take 60s Break";
+            btn.style.color = "#525768";
+            return;
+        }
+
+        restTimeLeft = 60;
+        btn.style.color = "var(--gold)";
+        btn.innerText = `⏳ REST: ${restTimeLeft}s`;
+        
+        restInterval = setInterval(() => {
+            restTimeLeft--;
+            if (restTimeLeft > 0) {
+                btn.innerText = `⏳ REST: ${restTimeLeft}s`;
+            } else {
+                clearInterval(restInterval);
+                restInterval = null;
+                triggerSystemAudio('levelup');
+                btn.innerText = "🥤 Break Done!";
+                btn.style.color = "#4BB543";
+                setTimeout(() => {
+                    btn.innerText = "🥤 Take 60s Break";
+                    btn.style.color = "#525768";
+                }, 2000);
+            }
+        }, 1000);
+    }
+
+    function scanSystemActivityTimer() {
+        if (!player.lastActiveTimestamp) return;
+        let elapsedHours = (Date.now() - player.lastActiveTimestamp) / (1000 * 60 * 60);
+
+        if (elapsedHours >= 24) {
+            player.combatStreak = 0;
+            document.getElementById('degrade-warning').style.display = "inline";
+            let wall = DIV_XP_WALLS[player.divisionIdx] || 200;
+            player.xp = Math.max(0, player.xp - Math.floor(wall * 0.10));
+            localStorage.setItem('arise_final_v2026', JSON.stringify(player));
+        } else {
+            document.getElementById('degrade-warning').style.display = "none";
+        }
+    }
+
+    function commitState() {
+        localStorage.setItem('arise_final_v2026', JSON.stringify(player));
+        refreshSystemHUD();
+    }
+
+    function refreshSystemHUD() {
+        scanSystemActivityTimer();
+        
+        document.getElementById('audio-toggle-btn').innerText = player.isMuted ? "🔇" : "🔊";
+        document.getElementById('account-lvl').innerText = `ACCOUNT LVL ${player.lvl}`;
+        document.getElementById('streak-node').innerText = `🔥 ${player.combatStreak} DAY COMBAT STREAK`;
+        
+        let currentDiv = DIVISIONS[player.divisionIdx];
+        document.documentElement.style.setProperty('--theme-color', currentDiv.color);
+        document.documentElement.style.setProperty('--theme-glow', currentDiv.glow);
+        document.getElementById('app-container').style.borderColor = currentDiv.color + "22";
+
+        const titleNode = document.getElementById('division-rank-display');
+        titleNode.innerText = currentDiv.name;
+        titleNode.style.color = currentDiv.color;
+
+        document.getElementById('display-agi').innerText = player.agi;
+        document.getElementById('display-str').innerText = player.str;
+        document.getElementById('display-vit').innerText = player.vit;
+
+        let wall = DIV_XP_WALLS[player.divisionIdx] || 200;
+        document.getElementById('xp-integer-display').innerText = `${player.xp} / ${wall} XP`;
+        document.getElementById('track-bar-fill').style.width = `${Math.min(100, (player.xp / wall) * 100)}%`;
+
+        const bTag = document.getElementById('bracket-tag');
+        if (player.isBossSpawned) {
+            document.getElementById('main-board').className = "campaign-module boss-alert";
+            bTag.className = "bracket-tag tag-boss-event";
+            bTag.innerText = "PROMOTION BRACKET EXAM";
+            document.getElementById('display-objective').innerText = "GATEKEEPER CHALLENGE UNLOCKED";
+            document.getElementById('display-brief').innerText = EXAMS[player.divisionIdx] || "All syllabus tiers mastered.";
+            document.getElementById('board-index-footer').innerText = "BRACKET LOCKDOWN IN EFFECT";
+            document.getElementById('board-index-footer').style.color = "var(--boss-red)";
+            document.getElementById('action-trigger').className = "btn btn-gatekeeper";
+            document.getElementById('action-trigger').innerText = "💀 Breach Gatekeeper Exam Portal";
+        } else {
+            document.getElementById('main-board').className = "campaign-module";
+            let group = SYLLABUS[player.divisionIdx] || SYLLABUS[0];
+            let task = group[player.currentStage];
+
+            if(task) {
+                bTag.innerText = task.mode === "core" ? "Core Foundation" : "Professional Polish Nuance";
+                bTag.className = task.mode === "core" ? "bracket-tag tag-foundation" : "bracket-tag tag-nuance";
+                document.getElementById('display-objective').innerText = task.name;
+                document.getElementById('display-brief').innerText = task.brief;
+                document.getElementById('board-index-footer').innerText = `STAGE ${player.currentStage + 1} / ${group.length}`;
+                document.getElementById('board-index-footer').style.color = "#464a59";
+            } else {
+                player.isBossSpawned = true;
+                commitState();
+                return;
+            }
+
+            const statBtns = document.querySelectorAll('.stat-upgrade-trigger');
+            if (player.bankPoints > 0) {
+                document.getElementById('points-alert').innerText = `✦ ${player.bankPoints} STAT KEYS`;
+                document.getElementById('points-alert').style.display = "inline";
+                statBtns.forEach(b => b.style.display = "flex");
+                document.getElementById('action-trigger').className = "btn btn-points";
+                document.getElementById('action-trigger').innerText = "✨ Allocate Character Parameters";
+            } else {
+                document.getElementById('points-alert').style.display = "none";
+                statBtns.forEach(b => b.style.display = "none");
+                document.getElementById('action-trigger').className = "btn";
+                document.getElementById('action-trigger').innerText = "⚔️ Deploy Training Matrix";
+            }
+        }
+    }
+
+    function allocateAttribute(stat) {
+        if(player.bankPoints <= 0) return;
+        player[stat]++;
+        player.bankPoints--;
+        commitState();
+    }
+
+    function openPortalGate() {
+        if(player.bankPoints > 0 && !player.isBossSpawned) {
+            alert("System Alert: Assign pending stat points before entering portals.");
+            return;
+        }
+
+        document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+        document.getElementById('screen-gate').classList.add('active');
+
+        document.getElementById('validation-ring').style.display = "none";
+        document.getElementById('btn-gate-complete').style.display = "block";
+        document.getElementById('flee-btn').style.display = "block";
+
+        const pTag = document.getElementById('portal-tag');
+        if (player.isBossSpawned) {
+            pTag.className = "bracket-tag tag-boss-event";
+            pTag.innerText = "GATEKEEPER CHALLENGE";
+            document.getElementById('portal-header').innerText = "⚠️ PROMOTION MATCH EN ROUTE";
+            document.getElementById('portal-header').style.color = "var(--boss-red)";
+            document.getElementById('portal-objective').innerText = "EXECUTE BOSS PARAMETERS NOW";
+            document.getElementById('portal-brief').innerText = EXAMS[player.divisionIdx] || "Peak mastery test.";
+            document.getElementById('btn-gate-complete').className = "btn btn-success";
+            document.getElementById('btn-gate-complete').innerText = "🏆 CLEAR: TEST RUN SUCCESSFUL";
+            document.getElementById('btn-gate-failed').style.display = "block";
+        } else {
+            let group = SYLLABUS[player.divisionIdx] || SYLLABUS[0];
+            let task = group[player.currentStage];
+            
+            pTag.className = task.mode === "core" ? "bracket-tag tag-foundation" : "bracket-tag tag-nuance";
+            pTag.innerText = task.mode === "core" ? "Core Foundation" : "Professional Polish Nuance";
+            document.getElementById('portal-header').innerText = "INSTANCE SECURED";
+            document.getElementById('portal-header').style.color = "var(--theme-color)";
+            document.getElementById('portal-objective').innerText = task.name;
+            document.getElementById('portal-brief').innerText = `${task.brief}\n\n👉 Complete workout on your own time, then verify below.`;
+            document.getElementById('btn-gate-complete').className = "btn btn-success";
+            document.getElementById('btn-gate-complete').innerText = "✨ Verify Complete Reps";
+            document.getElementById('btn-gate-failed').style.display = "none";
+        }
+    }
+
+    function initiateValidationDelay() {
+        triggerSystemAudio();
+        const completeBtn = document.getElementById('btn-gate-complete');
+        const failedBtn = document.getElementById('btn-gate-failed');
+        const fleeBtn = document.getElementById('flee-btn');
+        const ring = document.getElementById('validation-ring');
+
+        completeBtn.style.display = "none";
+        failedBtn.style.display = "none";
+        fleeBtn.style.display = "none";
+        ring.style.display = "block";
+
+        let countdown = 4;
+        ring.innerText = `⏳ SYSTEM ANALYSING FORM: ${countdown}s...`;
+
+        let timer = setInterval(() => {
+            countdown--;
+            if (countdown > 0) {
+                ring.innerText = `⏳ SYSTEM ANALYSING FORM: ${countdown}s...`;
+                triggerSystemAudio();
+            } else {
+                clearInterval(timer);
+                closePortalGate(true);
+            }
+        }, 1000);
+    }
+
+    function cancelPortalRun() { document.querySelectorAll('.screen').forEach(s => s.classList.remove('active')); document.getElementById('screen-home').classList.add('active'); refreshSystemHUD(); }
+
+    function closePortalGate(success) {
+        if (player.isBossSpawned) {
+            if (success) {
+                triggerSystemAudio('levelup');
+                alert("👑 BRACKET PROMOTION RECOGNIZED!");
+                player.divisionIdx++;
+                player.currentStage = 0;
+                player.isBossSpawned = false;
+                player.lvl += 1; 
+            } else {
+                triggerSystemAudio('warning');
+                alert("💀 TRIAL FAILED. Re-execute current skill curriculum.");
+            }
+        } else {
+            if (success) {
+                triggerSystemAudio('levelup');
+                let group = SYLLABUS[player.divisionIdx] || SYLLABUS[0];
+                let task = group[player.currentStage];
+                
+                player[task.targetStat] += 1; 
+                player.xp += 100;
+                player.currentStage++;
+                player.combatStreak++;
+                player.lastActiveTimestamp = Date.now();
+
+                if (player.currentStage >= group.length) player.isBossSpawned = true;
+
+                let wall = DIV_XP_WALLS[player.divisionIdx] || 200;
+                if (player.xp >= wall) {
+                    player.xp -= wall;
+                    player.lvl++;
+                    player.bankPoints += DIV_STAT_DROP[player.divisionIdx] || 3;
+                }
+            }
+        }
+        commitState();
+        document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+        document.getElementById('screen-home').classList.add('active');
+    }
+
+    refreshSystemHUD();
+</script>
+</body>
+</html>
