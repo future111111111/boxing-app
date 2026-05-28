@@ -6,11 +6,10 @@
     <title>COMBAT CORE v5.2</title>
     <style>
         :root { --bg: #080a0f; --panel: #111520; --blue: #87ceeb; --text: #e2e8f0; }
-        * { box-sizing: border-box; font-family: sans-serif; }
-        body { background: var(--bg); color: var(--text); padding: 20px; margin: 0; }
+        body { background: var(--bg); color: var(--text); font-family: sans-serif; padding: 20px; margin: 0; }
         .header { text-align: center; margin-bottom: 20px; }
-        .nav { display: flex; gap: 10px; margin-bottom: 20px; }
-        .tab { flex: 1; background: var(--panel); border: 1px solid #333; padding: 10px; text-align: center; cursor: pointer; font-size: 0.8rem; }
+        .nav { display: flex; gap: 5px; margin-bottom: 20px; }
+        .tab { flex: 1; background: #1e2638; padding: 10px; text-align: center; cursor: pointer; font-size: 0.8rem; border: 1px solid var(--blue); }
         .page { display: none; }
         .active { display: block; }
         .panel { background: var(--panel); border: 1px solid #333; padding: 15px; margin-bottom: 15px; }
@@ -21,9 +20,7 @@
 </head>
 <body>
 
-    <div class="header">
-        <h1>COMBAT CORE v5.2</h1>
-    </div>
+    <div class="header"><h1>COMBAT CORE v5.2</h1></div>
 
     <div class="nav">
         <div class="tab" onclick="show('matrix')">Matrix</div>
@@ -50,11 +47,17 @@
     </div>
 
     <div id="chassis" class="page">
-        <div class="panel"><h3>Stats</h3><p>Weight, reach, and speed data will appear here.</p></div>
+        <div class="panel">
+            <div class="title">My Chassis</div>
+            <p class="desc">This is where your stats and physical progress will be tracked.</p>
+        </div>
     </div>
 
     <div id="profile" class="page">
-        <div class="panel"><h3>Fighter Profile</h3><p>Rank: Recruit Division</p></div>
+        <div class="panel">
+            <div class="title">Fighter Profile</div>
+            <p class="desc">Rank: Recruit Division</p>
+        </div>
     </div>
 
     <script>
