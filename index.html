@@ -3,68 +3,134 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>COMBAT CORE v5.1 MASTER</title>
+    <title>COMBAT CORE v5.0 MASTER</title>
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Squada+One&display=swap" rel="stylesheet">
     <style>
-        :root { --bg-color: #080a0f; --panel-color: #111520; --border-color: #1e2638; --text-color: #e2e8f0; --accent-blue: #87ceeb; --accent-purple: #a855f7; --accent-green: #4ade80; --accent-red: #f87171; --accent-dim: #64748b; }
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Share Tech Mono', monospace; -webkit-tap-highlight-color: transparent; -webkit-user-select: none; user-select: none; }
-        html, body { background-color: var(--bg-color); color: var(--text-color); overflow-x: hidden; overscroll-behavior-y: none; }
-        body { padding: 20px 15px 120px 15px; }
-        header { background: rgba(17, 21, 32, 0.75); backdrop-filter: blur(12px); border: 2px solid var(--border-color); padding: 18px 15px; margin-bottom: 15px; text-align: center; position: sticky; top: 10px; z-index: 100; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5); }
-        .username-display { font-size: 1.15rem; color: #fff; text-transform: uppercase; border-bottom: 1px dashed var(--accent-dim); display: inline-block; padding: 2px 6px; cursor: pointer; }
-        .rank-title { font-family: 'Squada One', sans-serif; color: var(--accent-blue); font-size: 1.9rem; text-transform: uppercase; margin-bottom: 5px; }
-        .nav-tabs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 5px; margin-bottom: 15px; }
-        .tab-btn { background: var(--panel-color); color: var(--accent-dim); border: 1px solid var(--border-color); padding: 12px 0; font-size: 0.85rem; cursor: pointer; text-transform: uppercase; }
-        .tab-btn.active { color: #fff; background: var(--border-color); border-color: var(--accent-blue); }
+        :root { --bg-color: #080a0f; --panel-color: #111520; --border-color: #1e2638; --text-color: #e2e8f0; --accent-blue: #87ceeb; --accent-purple: #a855f7; --accent-dim: #64748b; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Share Tech Mono', monospace; user-select: none; }
+        body { background-color: var(--bg-color); color: var(--text-color); padding: 20px 15px 120px 15px; }
+        header { background: var(--panel-color); border: 2px solid var(--border-color); padding: 20px; text-align: center; margin-bottom: 20px; }
+        .glove-emblem { font-size: 3rem; margin-bottom: 10px; display: block; }
+        .username-display { font-size: 1.2rem; color: #fff; cursor: pointer; text-decoration: underline; }
+        .rank-title { font-family: 'Squada One', sans-serif; color: var(--accent-blue); font-size: 1.8rem; }
+        .nav-tabs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 5px; margin-bottom: 20px; }
+        .tab-btn { background: var(--panel-color); color: var(--accent-dim); border: 1px solid var(--border-color); padding: 10px; cursor: pointer; }
+        .tab-btn.active { border-color: var(--accent-blue); color: #fff; }
         .app-page { display: none; }
         .app-page.active { display: block; }
-        .panel { background: var(--panel-color); border: 2px solid var(--border-color); padding: 16px; margin-bottom: 15px; }
-        .panel-title { font-family: 'Squada One', sans-serif; font-size: 1.4rem; color: var(--accent-blue); text-transform: uppercase; }
-        .watch-btn { display: block; background: var(--accent-blue); color: #000; text-align: center; padding: 8px; margin-top: 10px; text-decoration: none; font-size: 0.75rem; font-weight: bold; border-radius: 2px; }
-        .inspection-panel { display: none; background: #090a0d; border: 1px dashed var(--border-color); border-top: none; padding: 12px; font-size: 0.85rem; color: #cbd5e1; }
+        .panel { background: var(--panel-color); border: 2px solid var(--border-color); padding: 15px; margin-bottom: 15px; }
+        .matrix-item { background: rgba(0,0,0,0.3); padding: 15px; border: 1px solid var(--border-color); margin-bottom: 10px; cursor: pointer; }
+        .inspection-panel { display: none; padding: 10px; font-size: 0.9rem; color: #cbd5e1; border: 1px dashed var(--border-color); }
         .inspection-panel.active { display: block; }
     </style>
 </head>
-<body>
-
-    <header>
-        <div><span class="username-display" id="userDisplay" onclick="alert('Change name function active')">FIGHTER_01</span></div>
-        <div class="rank-title">RECRUIT DIVISION</div>
+<body><header>
+        <span class="glove-emblem">🥊</span>
+        <div class="username-display" id="userDisplay" onclick="changeUsername()">FIGHTER_01</div>
+        <div class="rank-title" id="rankDisplay">RECRUIT DIVISION</div>
     </header>
 
     <div class="nav-tabs">
-        <button class="tab-btn active" onclick="switchTab('dashboard')">Matrix</button>
-        <button class="tab-btn" onclick="switchTab('chassis')">Chassis</button>
-        <button class="tab-btn" onclick="switchTab('profile')">Profile</button>
-        <button class="tab-btn" onclick="switchTab('syllabus')">Syllabus</button>
+        <button class="tab-btn active" id="tab-dashboard" onclick="switchTab('dashboard')">Matrix</button>
+        <button class="tab-btn" id="tab-chassis" onclick="switchTab('chassis')">Chassis</button>
+        <button class="tab-btn" id="tab-profile" onclick="switchTab('profile')">Profile</button>
+        <button class="tab-btn" id="tab-syllabus" onclick="switchTab('syllabus')">Syllabus</button>
     </div>
 
     <div id="page-dashboard" class="app-page active">
         <div class="panel">
-            <span class="panel-title">> Shadowboxing</span>
-            <div id="inspect-task1" class="inspection-panel active">
-                Keep hands up. Step and throw punches one at a time. Rotate hips.
-                <a href="https://www.youtube.com/results?search_query=how+to+shadowbox+for+absolute+beginners" class="watch-btn">WATCH DRILL</a>
+            <span style="font-family: 'Squada One'; color: var(--accent-blue); font-size: 1.4rem;">Daily Combat Matrix</span>
+            
+            <div class="matrix-item" onclick="toggleInspection('inspect-task1')">
+                <div>> Shadowboxing Routine</div>
+                <div class="inspection-panel" id="inspect-task1">
+                    <b>Objective:</b> Perfect your punching form.<br>
+                    <b>Steps:</b> Keep hands up by your face. Throw one punch at a time. Rotate your hips to drive power through your core. Keep your feet planted; avoid crossing your legs.
+                </div>
+            </div>
+
+            <div class="matrix-item" onclick="toggleInspection('inspect-task2')">
+                <div>> Heavy Bag / Pads</div>
+                <div class="inspection-panel" id="inspect-task2">
+                    <b>Objective:</b> Build impact and conditioning.<br>
+                    <b>Steps:</b> Strike with your knuckles. Keep your opposite hand glued to your chin at all times to block counters. Snap your punch back to your face immediately after contact.
+                </div>
+            </div>
+
+            <div class="matrix-item" onclick="toggleInspection('inspect-task3')">
+                <div>> Footwork</div>
+                <div class="inspection-panel" id="inspect-task3">
+                    <b>Objective:</b> Master movement and balance.<br>
+                    <b>Steps:</b> Moving forward? Step with the front foot first. Moving back? Step with the back foot first. Stay light on your toes and keep your weight centered.
+                </div>
             </div>
         </div>
+    </div><div id="page-chassis" class="app-page">
         <div class="panel">
-            <span class="panel-title">> Heavy Bag Work</span>
-            <div id="inspect-task2" class="inspection-panel active">
-                Hit with knuckles. Keep opposite hand glued to chin. Focus on form.
-                <a href="https://www.youtube.com/results?search_query=how+to+hit+a+heavy+bag+for+total+beginners" class="watch-btn">WATCH DRILL</a>
-            </div>
+            <span style="font-family: 'Squada One'; color: var(--accent-blue); font-size: 1.4rem;">Chassis Stats</span>
+            <p style="margin-top:10px;">Physical integrity: 100%</p>
         </div>
     </div>
 
     <div id="page-profile" class="app-page">
-        <div class="panel"><span class="panel-title">Weight Log</span></div>
+        <div class="panel">
+            <span style="font-family: 'Squada One'; color: var(--accent-blue); font-size: 1.4rem;">Profile / Weight Log</span>
+            <div style="margin-top:15px;">
+                <input type="number" id="weightInput" placeholder="Enter weight (lbs)" style="padding:8px; width:70%; background:#080a0f; border:1px solid var(--border-color); color:#fff;">
+                <button onclick="saveWeight()" style="padding:8px; background:var(--accent-blue); border:none; cursor:pointer;">Save</button>
+            </div>
+            <div id="weightLog" style="margin-top:15px; color:var(--accent-dim);">
+                Latest entry: <span id="savedWeight">None</span>
+            </div>
+        </div>
     </div>
 
-    <script>
+    <div id="page-syllabus" class="app-page">
+        <div class="panel">
+            <span style="font-family: 'Squada One'; color: var(--accent-blue); font-size: 1.4rem;">Syllabus</span>
+            <p style="margin-top:10px;">Curriculum loaded.</p>
+        </div>
+    </div><script>
+        // Tab switching logic
         function switchTab(id) {
             document.querySelectorAll('.app-page').forEach(p => p.classList.remove('active'));
             document.querySelectorAll('.tab-btn').forEach(t => t.classList.remove('active'));
             document.getElementById('page-' + id).classList.add('active');
+            document.getElementById('tab-' + id).classList.add('active');
+        }
+
+        // Toggle mission details
+        function toggleInspection(id) { 
+            document.getElementById(id).classList.toggle('active'); 
+        }
+
+        // Change Username
+        function changeUsername() {
+            let newName = prompt("Enter new fighter name:", document.getElementById('userDisplay').innerText);
+            if (newName) {
+                document.getElementById('userDisplay').innerText = newName.toUpperCase();
+                localStorage.setItem('fighterName', newName.toUpperCase());
+            }
+        }
+
+        // Save Weight to Browser
+        function saveWeight() {
+            let weight = document.getElementById('weightInput').value;
+            if (weight) {
+                localStorage.setItem('fighterWeight', weight);
+                document.getElementById('savedWeight').innerText = weight + " lbs";
+                alert("Weight logged!");
+            }
+        }
+
+        // Load data on startup
+        window.onload = () => {
+            if(localStorage.getItem('fighterName')) {
+                document.getElementById('userDisplay').innerText = localStorage.getItem('fighterName');
+            }
+            if(localStorage.getItem('fighterWeight')) {
+                document.getElementById('savedWeight').innerText = localStorage.getItem('fighterWeight') + " lbs";
+            }
         }
     </script>
 </body>
