@@ -691,6 +691,7 @@
         <button class="tab-btn" id="tab-syllabus" onclick="switchTab('syllabus')">Syllabus</button>
     </div>
 
+    <!-- PAGE: DASHBOARD -->
     <div id="page-dashboard" class="app-page active">
         
         <div class="timer-container">
@@ -778,6 +779,7 @@
         </div>
     </div>
 
+    <!-- PAGE: CHASSIS -->
     <div id="page-chassis" class="app-page">
         <div class="panel">
             <div class="panel-title-row" style="border:none; margin-bottom:5px;">
@@ -858,6 +860,7 @@
         </div>
     </div>
 
+    <!-- PAGE: PROFILE -->
     <div id="page-profile" class="app-page">
         <div class="panel">
             <div class="panel-title-row">
@@ -870,6 +873,7 @@
         </div>
     </div>
 
+    <!-- PAGE: SYLLABUS -->
     <div id="page-syllabus" class="app-page">
         <div class="panel">
             <div class="panel-title-row">
@@ -879,6 +883,9 @@
         </div>
     </div>
 
+    <!-- ==========================================
+        INTEGRATED LOGIC MOTOR JAVASCRIPT
+    ========================================== -->
     <script>
         // ==========================================
         // 1. GLOBAL CORE STATE
@@ -979,7 +986,7 @@
         // 4. COMBAT MATRIX TASK PROTOCOLS
         // ==========================================
         function toggleTaskById(wrapperId, xpValue) {
-            // Event safety filtering for nested info triggers
+            // Fixed Collision Bleed: Safely exit if clicking inspect trigger button
             if (window.event && window.event.target.classList.contains('info-trigger-btn')) return;
 
             const wrapper = document.getElementById(wrapperId);
@@ -1015,7 +1022,11 @@
         }
 
         function toggleInspection(inspectId) {
-            if (window.event) window.event.stopPropagation(); // Avoid parent task triggering
+            // Complete Intercept Shield added to protect Checklist rows
+            if (window.event) {
+                window.event.stopPropagation();
+                window.event.preventDefault();
+            }
             const panel = document.getElementById(inspectId);
             if (panel) {
                 panel.classList.toggle("active");
